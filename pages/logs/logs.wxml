@@ -1,0 +1,22 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <view wx:for="{{logs}}">
+
+    <view>
+
+      <image src="../../image/meimv.jpg" mode='scaleToFill'>
+      </image>
+
+
+      <view>
+        <text class="userinfo">古力娜扎 · 23 · 模特</text>
+
+        <text class="info-time">1分钟前</text>
+      </view>
+
+    </view>
+    <view class="userinfo2"> 遇见风景遇见你遇见风景遇见你遇见风景遇见你遇见风景遇见你遇见风景遇见你 </view>
+
+    <view class='line_10'> </view>
+  </view>
+</view>

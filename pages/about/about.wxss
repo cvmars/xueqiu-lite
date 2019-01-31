@@ -1,0 +1,25 @@
+.qcode{
+
+position: absolute;
+bottom: 40pt;
+
+width: 100%;
+
+}
+
+.about-text{
+
+  margin: 40pt 15pt ;
+
+font-size: 12pt;
+color: #333;
+}
+
+.about-bottom{
+position: absolute;
+bottom: 30pt;
+text-align: center;
+width: 100%;
+font-size: 12pt;
+color: #333;
+}

@@ -1,0 +1,17 @@
+{
+  "pages": [
+
+    "pages/index/index",
+    "pages/common/common",
+   
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/piaoliu/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}
