@@ -1,9 +1,7 @@
 {
   "pages": [
-
     "pages/index/index",
     "pages/common/common",
-   
     "pages/logs/logs",
     "pages/about/about",
     "pages/piaoliu/logs"

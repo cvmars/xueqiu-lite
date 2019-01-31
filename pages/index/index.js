@@ -108,19 +108,13 @@ Page({
         let data = { code : code }
         util.Requests_json("https://test.lhxq.top/api/customers/login_miniprogram/", data).then((res) => {
 
-          if (res && res.header && res.header['Set-Cookie']){
-
-            console.log('cookieKey :' + res.header['Set-Cookie']);
-            wx.setStorageSync('cookieKey', res.header['Set-Cookie']);//
-
-          }
+         
           console.log(res)
 
         })
       }
     })
   },
-
 
 
   getUserInfo: function(e) {

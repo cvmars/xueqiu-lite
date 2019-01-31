@@ -50,6 +50,15 @@ function Requests_json(url, data) {
         } else {
           resolv(res.data)
         }
+
+        if (res && res.header && res.header['Set-Cookie']) {
+
+          console.log('cookieKey :' + res.header['Set-Cookie']);
+          wx.setStorageSync('cookieKey', res.header['Set-Cookie']);//
+
+        }
+        
+
       },
       fail: function(err) {
         wx.hideLoading()
