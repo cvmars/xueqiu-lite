@@ -2,6 +2,9 @@
 //获取应用实例
 const app = getApp()
 const util = require('../../utils/api.js')
+const API_LOGIN = '/api/customers/login_miniprogram/' //登录接口
+const API_USER_UPDATE = '/customer/profile/' //修改用户信息
+
 
 Page({
   data: {
@@ -70,6 +73,14 @@ Page({
     })
 
   },
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
 
   onLoad: function() {
     if (app.globalData.userInfo) {
@@ -99,17 +110,42 @@ Page({
       })
     }
 
-
+    var that = this
     wx.login({
+
       //获取code
       success: function(res) {
         var code = res.code //返回code
         console.log("code :" + code);
-        let data = { code : code }
-        util.Requests_json("https://test.lhxq.top/api/customers/login_miniprogram/", data).then((res) => {
+        let data = {
+          code: code
+        }
+        util.Requests_json(util.getBaseUrl() + API_LOGIN, data).then((res) => {
 
-         
           console.log(res)
+
+          wx.getUserInfo({
+            success: res => {
+              app.globalData.userInfo = res.userInfo
+              that.setData({
+                userInfo: res.userInfo,
+                hasUserInfo: true
+              })
+
+              var username = app.globalData.userInfo.nickName
+              var avatarUrl = app.globalData.userInfo.avatarUrl
+              var gender = app.globalData.userInfo.gender
+              var city = app.globalData.userInfo.city
+
+
+              let data = {}
+              data['name'] = username
+              data['gender'] = gender
+              data['avatar_url'] = avatarUrl
+              console.log(this)
+              that.onUpdateUserInfo(data);
+            }
+          })
 
         })
       }
@@ -117,13 +153,22 @@ Page({
   },
 
 
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  onUpdateUserInfo: function(data) {
+
+ 
+    util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, data)
+    .then((res) => {
+
+     })
+  
+  },
+
+
+
+  //完善用户信息
+  completeInfo: function(e) {
+
+
   },
 
   onShareAppMessage: function(res) {
