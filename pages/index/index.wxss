@@ -31,6 +31,7 @@ page{
 
 position: fixed;
 right: 0;
+margin-top:30pt;
 }
 
 .left-item-child{
@@ -62,6 +63,7 @@ right: 0;
     box-sizing: border-box;
     background-clip: content-box;
     font-size: 16px;
+    z-index:1;
 }
 .input{
 
@@ -79,6 +81,8 @@ right: 0;
   background-color: #fff;
    border-radius:6pt;
    width: 140pt;
+   margin-top: 25vh;
+   z-index: 10;
 }
 
 .kongming{
@@ -100,7 +104,7 @@ position: absolute;
 bottom: 160pt;
 animation:bgChange 8s infinite;
 animation-fill-mode:forwards;
-z-index:9999;
+z-index:1;
 }
 
 @keyframes bgChange{
