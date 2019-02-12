@@ -13,7 +13,7 @@ Page({
 
     userInfo: {},
     userIntro: '',
-    userIntroInput:'',
+    userIntroInput: '',
     addresshome: '', //默认地区
     addressCompany: '',
     userGender: 1, //默认性别
@@ -97,15 +97,15 @@ Page({
 
   handleConfirm: function(e) {
 
-    
+
 
 
     this.setData({
       userIntro: this.data.userIntroInput,
       showIntr: false,
       userIntroInput: ''
-   
-   })
+
+    })
     console.log("input intro :" + this.data.userIntro)
     let data = {}
     data['intro'] = this.data.userIntro
@@ -163,11 +163,11 @@ Page({
   onShareAppMessage: function() {
 
   }, //普通选择器
-  bindTextAreaBlur:function(e){
+  bindTextAreaBlur: function(e) {
 
-      //打印结果”是我是一个textarea”
+    //打印结果”是我是一个textarea”
     this.setData({
-      userIntroInput : e.detail.value,
+      userIntroInput: e.detail.value,
     })
   },
   bindPickerChange: function(e) {
@@ -240,7 +240,7 @@ Page({
     })
 
     let params = {}
-    var result = this.fomateTime('time :' + this.data.date)
+    var result = this.fomateTime(this.data.date)
     console.log('params :' + result)
     params['birthday'] = result
     this.onUpdateUserInfo(params)
@@ -281,7 +281,7 @@ Page({
 
     console.log('time :' + data)
 
-    var time = new Date(data).getTime()/1000;
+    var time = new Date(data).getTime() / 1000;
 
     console.log('time :' + time)
 
@@ -291,6 +291,7 @@ Page({
 
     console.log('result :' + result)
 
+    return result;
   },
 
 
