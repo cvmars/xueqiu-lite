@@ -1,8 +1,11 @@
 {
   "pages": [
+   
     "pages/index/index",
-    "pages/common/common",
+    "pages/info/common",
     "pages/logs/logs",
+    "pages/main/common",
+    "pages/common/common",
     "pages/about/about",
     "pages/piaoliu/logs"
   ],
@@ -11,5 +14,28 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "活动",
+        "iconPath": "image/main_tab_item_icon1.png",
+        "selectedIconPath": "image/main_tab_item_icon1_selected.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "最近在线",
+        "iconPath": "image/main_tab_item_icon2.png",
+        "selectedIconPath": "image/main_tab_item_icon2_selected.png"
+      },
+      {
+        "pagePath": "pages/main/common",
+        "text": "我的",
+        "iconPath": "image/main_tab_item_icon4.png",
+        "selectedIconPath": "image/main_tab_item_icon4_selected.png"
+      }
+    ]
   }
 }

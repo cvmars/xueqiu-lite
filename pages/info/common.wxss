@@ -1,0 +1,42 @@
+/* pages/common/common.wxss */
+
+
+/*选择器  */
+.section__title{
+  margin-bottom: 20rpx;
+}
+.section{
+  margin: 50rpx 0;
+  font-size: 30rpx;
+}
+
+
+.item-info{
+
+
+margin-top: 10pt;
+margin-bottom: 10pt;
+}
+
+
+.line{
+
+  width: 100%;height: 1px;
+  background: #eee;
+}
+
+.item-title{
+  margin-left: 15pt;
+  color: #333;
+  size: 14pt;
+}
+
+
+.item-value{
+
+  float: right;
+  margin-right: 15pt;
+  color: #666;
+  size: 12pt;
+  margin-left: 20pt;
+}

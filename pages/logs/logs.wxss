@@ -1,46 +1,68 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.list-item {
+  width: 100%;
 }
 
-.userinfo{
-
-  color: #1F2124;
+.userinfo {
+  color: #1f2124;
   font-size: 12pt;
   margin-left: 10pt;
-  margin-top: 10pt;
-
+  margin-right: 80pt;
+  margin-top: 15pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.userinfo2{
-
-     left: 0;
-     width: 100%;
-     margin-right: 10pt;
-     margin-left: 10pt;
-     font-size: 12pt;
-     margin-top: 6pt;
-     margin-bottom: 10pt; 
-    color: #F57C00;
-    text-overflow: ellipsis;
-    
+.userinfo2 {
+  margin-right: 10pt;
+  margin-left: 10pt;
+  font-size: 12pt;
+  margin-top: 8pt;
+  margin-bottom: 10pt;
+  color: #f57c00;
+  text-overflow: ellipsis;
 }
 
-.line_10{
-
-background: #fff;
-width: 100%;
-height: 10pt;
+.line_10 {
+  background: #f7f7f7;
+  width: 100%;
+  height: 6pt;
 }
 
-.info-time{
+/* 
+.avator{
 
-  float: right;
+  width: 100%;
+  padding: 0  50pt;
+} */
+
+.avator {
+  width: calc(100% - 20pt);
+  margin-left: 10pt;
+  margin-right: 10pt;
+  height: 200pt;
+  transition-duration: 0.5s;
+  z-index: 1;
+}
+
+.list-item:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05); /*Safari 和 Chrome*/
+  -moz-transform: scale(1.05); /*Firefox*/
+  -ms-transform: scale(1.05); /*IE9*/
+  -o-transform: scale(1.05); /*Opera*/
+}
+
+.info-time {
   color: #666;
   align-items: center;
   top: 0;
+  margin-top: 1dp;
   font-size: 11pt;
-  
+  float: right;
+  margin-right: 10pt;
+}
 
+.item-user {
+  width: 100%;
 }

@@ -1,21 +1,20 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <view wx:for="{{logs}}">
+  <view class="list-item" wx:for="{{results}}"  wx:for-item= "user">
 
     <view>
 
-      <image src="../../image/meimv.jpg" mode='scaleToFill'>
+      <image class="avator" src="{{user.avatar_url}}" mode='aspectFill'>
       </image>
 
+      <view class="item-user">
+        <text class="userinfo">{{user.name ? user.name :"莲花的娃"}} · {{user.gender == 1 ? '男' : '女'}} · {{user.age ? user.age : 21}} · {{user.address_home ? user.address_home : '琴亭镇'}}</text>
 
-      <view>
-        <text class="userinfo">古力娜扎 · 23 · 模特</text>
-
-        <text class="info-time">1分钟前</text>
+        <text class="info-time">{{user.friendTime}}</text>
       </view>
 
     </view>
-    <view class="userinfo2"> 遇见风景遇见你遇见风景遇见你遇见风景遇见你遇见风景遇见你遇见风景遇见你 </view>
+    <view class="userinfo2"> {{user.intro ? user.intro : '在莲花遇见你'}} </view>
 
     <view class='line_10'> </view>
   </view>

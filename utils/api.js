@@ -24,6 +24,7 @@ function Requests(url, data) {
             content: '网络错误或服务器繁忙!',
           })
         } else {
+          console.log(res.data)
           resolv(res.data)
         }
       },
@@ -55,7 +56,6 @@ function getHeader() {
 
   let header = {
     'Content-Type': 'application/json',
-     'Referer':'https://test.lhxq.top'
   };
   if (sessionid) {
     header['Cookie'] = "csrftoken=" + csrftoken + ";sessionid=" + sessionid;

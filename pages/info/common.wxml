@@ -1,0 +1,79 @@
+<view class='parent'>
+
+
+  <view class='item-info'>
+
+    <text class='item-title'>昵称</text>
+    <text class="item-value">{{userInfo.name}}</text>
+
+  </view>
+
+  <view class='line'></view>
+
+
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+
+    <view class='item-info'>
+
+      <text class='item-title'>性别</text>
+      <text class="item-value">{{userGender == 1 ? '男' :'女'}}</text>
+    </view>
+  </picker>
+
+
+
+
+  <view class='line'></view>
+
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class='item-info'>
+
+      <text class='item-title'>出生日期</text>
+      <text class="item-value"> {{date}}</text>
+
+    </view>
+
+  </picker>
+
+  <view class='line'></view>
+
+
+
+  <picker bindchange="addressHomePickerChange" value="{{index}}" range="{{address_home}}">
+
+    <view class='item-info'>
+
+      <text class='item-title'>家庭地址</text>
+      <text class="item-value">{{addresshome}} </text>
+
+    </view>
+  </picker>
+  <view class='line'></view>
+
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class='item-info'>
+
+      <text class='item-title'>工作地址</text>
+      <text class="item-value">{{addressCompany}}</text>
+
+    </view>
+  </picker>
+  <view class='line'></view>
+
+
+  <view class='item-info' bindtap='onIntro'>
+
+    <text class='item-title'>个人签名</text>
+    <text class="item-value">{{userIntro}} </text>
+
+  </view>
+
+  <dialog visible="{{showIntr}}" title="个人签名" opacity="{{opacity}}" show-close="true" show-footer="true" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+    <textarea style='height:20vh;' bindinput = 'bindTextAreaBlur' placeholder='输入个性签名' value='{{userIntroInput}}'>
+    
+    </textarea>
+    
+  </dialog>
+
+
+</view>

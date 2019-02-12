@@ -1,6 +1,6 @@
 <!--logs.wxml-->
 <view class="log-list">
-  <view wx:for="{{logs}}">
+  <view wx:for="{{result}}"  wx:for-item= "piaoliu">
 
     <view class = "info">
 
@@ -9,12 +9,12 @@
 
         <view style='display:flex;align-items:center;'>
 
-          <image class="avator" src='../../image/meimv.jpg'></image>
-          <text class="txt-name">我的名字</text>
+          <image class="avator" src='{{piaoliu.customer.avatar_url}}'></image>
+          <text class="txt-name">{{piaoliu.customer.name}}</text>
 
-          <text class="txt-time">1分钟前</text>
+          <text class="txt-time">{{piaoliu.friendTime}}</text>
         </view>
-        <text class="txt-content">我喜欢我喜欢你我喜欢你我喜欢你我喜欢你我喜欢你我喜欢你我喜欢你我喜欢你我喜欢你你</text>
+        <text class="txt-content">{{piaoliu.text}}</text>
 
       </view>
     </view>

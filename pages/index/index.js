@@ -4,7 +4,8 @@ const app = getApp()
 const util = require('../../utils/api.js')
 const API_LOGIN = '/api/customers/login_miniprogram/' //登录接口
 const API_USER_UPDATE = '/customer/profile/' //修改用户信息
-
+const API_POST_PIAOLIU = '/bottles/' //抛出漂流瓶
+const API_GET_PIAOLIU = '/bottles/pick/' // 捡漂流瓶
 
 Page({
   data: {
@@ -14,6 +15,8 @@ Page({
     hasUserInfo: false,
     pignziHidden: true,
     pignzijianHidden: true,
+    konghidden:true,
+    piaoliutext:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -32,8 +35,12 @@ Page({
   },
 
   onSubPiaoliu: function(e) {
+    this.onPiaoliuPao();
     this.setData({
-      inputHidden: true
+      piaoliutext:'',
+      inputHidden: true,
+      pignziHidden:true,
+      konghidden :false
     })
 
     wx.showToast({
@@ -72,6 +79,7 @@ Page({
       pignziHidden: false
     })
 
+    this.onJianliuPao();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -83,6 +91,7 @@ Page({
   },
 
   onLoad: function() {
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -92,6 +101,8 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
+
+        app.globalData.userInfo = res.userInfo
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -110,6 +121,7 @@ Page({
       })
     }
 
+
     var that = this
     wx.login({
 
@@ -126,7 +138,7 @@ Page({
 
           wx.getUserInfo({
             success: res => {
-              app.globalData.userInfo = res.userInfo
+              app.globalData.user = res.userInfo
               that.setData({
                 userInfo: res.userInfo,
                 hasUserInfo: true
@@ -137,11 +149,12 @@ Page({
               var gender = app.globalData.userInfo.gender
               var city = app.globalData.userInfo.city
 
+              console.log('avatarUrl :' + avatarUrl);
 
               let data = {}
               data['name'] = username
               data['gender'] = gender
-              data['avatar_url'] = avatarUrl
+              // data['avatar_url'] = avatarUrl
               console.log(this)
               that.onUpdateUserInfo(data);
             }
@@ -152,24 +165,47 @@ Page({
     })
   },
 
-
+  //完善用户信息
   onUpdateUserInfo: function(data) {
 
- 
+
     util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, data)
-    .then((res) => {
+      .then((res) => {
 
-     })
+      })
+
+  },
+
+  //抛出漂流瓶
+  onPiaoliuPao: function(e) {
+
+    let data = {};
+    data['text'] = this.data.piaoliutext;
+    util.Requests_json(util.getBaseUrl() + API_POST_PIAOLIU, data)
+      .then((res) => {
+
+       
+      })
+  }, 
   
+  //捡漂流瓶
+  onJianliuPao: function (e) {
+
+  
+    util.Requests(util.getBaseUrl() + API_GET_PIAOLIU)
+      .then((res) => {
+        this.setData({
+
+          // pignziHidden: true
+        })
+
+        // wx.showToast({
+        //   title: res,
+        // })
+
+      })
   },
 
-
-
-  //完善用户信息
-  completeInfo: function(e) {
-
-
-  },
 
   onShareAppMessage: function(res) {
     // if (res.from === 'view') {
@@ -179,7 +215,7 @@ Page({
     //区分按钮分享
     // if (res.target.id === "btn") {
     return {
-      title: '来自莲花的漂流瓶',
+      title: '来自莲花的孔明灯',
       path: '/pages/title/title',
       imageUrl: '../../image/bg_piaoliu_share.jpg',
       success: function(res) {
