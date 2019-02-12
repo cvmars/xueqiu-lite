@@ -40,7 +40,7 @@
 
 <view  class = "input">
 
-<textarea style = 'width : 115pt' placeholder ='祝福的心愿' value='{{piaoliutext}}'></textarea>
+<textarea style = 'width : 115pt' bindinput = 'bindTextAreaBlur' placeholder ='祝福的心愿' value='{{piaoliutext}}'></textarea>
 </view>
 
 
@@ -66,6 +66,13 @@
 <button bindtap='onSubPiaoliu' class = "btn-piaoliu"> 确定 </button>
  
 </view>
+
+
+<!-- <view class = "input-parent"  > 
+
+<button open-type="getUserInfo" bindgetuserinfo="userInfoHandler">微信登录</button>
+ </view> -->
+
 
 
 

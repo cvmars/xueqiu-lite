@@ -36,7 +36,7 @@ right: 0;
 .left-item-child{
 
   border-radius: 20pt 0pt 0pt 20pt;
-  background-color: #333333cc;
+  background-color: #333333;
   margin-top: 10pt;
   margin-bottom: 10pt;
   padding-left: 15pt;

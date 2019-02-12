@@ -6,6 +6,7 @@
     "pages/logs/logs",
     "pages/main/common",
     "pages/common/common",
+    "pages/login/common",
     "pages/about/about",
     "pages/piaoliu/logs"
   ],

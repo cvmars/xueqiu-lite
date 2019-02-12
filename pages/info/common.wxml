@@ -22,10 +22,9 @@
 
 
 
-
   <view class='line'></view>
 
-  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+  <picker mode="date" value="{{date}}" start="1960-09-01" end="2037-09-01" bindchange="bindDateChange">
     <view class='item-info'>
 
       <text class='item-title'>出生日期</text>

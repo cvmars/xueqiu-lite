@@ -4,8 +4,9 @@ const app = getApp()
 const util = require('../../utils/api.js')
 const API_LOGIN = '/api/customers/login_miniprogram/' //登录接口
 const API_USER_UPDATE = '/customer/profile/' //修改用户信息
-const API_POST_PIAOLIU = '/bottles/' //抛出漂流瓶
-const API_GET_PIAOLIU = '/bottles/pick/' // 捡漂流瓶
+const API_POST_PIAOLIU = '/api/bottles-mine/' //抛出漂流瓶
+const API_GET_PIAOLIU = '/api/bottles/pickone/' // 捡漂流瓶
+const API_GET_EXITAPP = '/customer/logout/' //退出登录
 
 Page({
   data: {
@@ -15,8 +16,8 @@ Page({
     hasUserInfo: false,
     pignziHidden: true,
     pignzijianHidden: true,
-    konghidden:true,
-    piaoliutext:'',
+    konghidden: true,
+    piaoliutext: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -37,10 +38,10 @@ Page({
   onSubPiaoliu: function(e) {
     this.onPiaoliuPao();
     this.setData({
-      piaoliutext:'',
+      piaoliutext: '',
       inputHidden: true,
-      pignziHidden:true,
-      konghidden :false
+      pignziHidden: true,
+      konghidden: false
     })
 
     wx.showToast({
@@ -82,13 +83,24 @@ Page({
     this.onJianliuPao();
   },
   getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
+      console.log(e)
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    }
+    // }, 
+    // onUnload: function () {
+    //   //页面关闭
+    //   console.log('index Unload')
+
+    //   util.Requests(util.getBaseUrl() + API_GET_EXITAPP, data)
+    //     .then((res) => {
+
+    //     })
+    // }
+    ,
 
   onLoad: function() {
 
@@ -154,15 +166,46 @@ Page({
               let data = {}
               data['name'] = username
               data['gender'] = gender
-              // data['avatar_url'] = avatarUrl
+              data['avatar_url'] = avatarUrl
               console.log(this)
               that.onUpdateUserInfo(data);
+            },
+            fail: function () {
+              //获取用户信息失败后。请跳转授权页面
+              wx.showModal({
+                title: '授权登陆',
+                content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                    wx.navigateTo({
+                      url: '../login/common',
+                    })
+                  }
+                }
+              })
             }
           })
 
         })
+      },
+      fail: function() {
+        //获取用户信息失败后。请跳转授权页面
+        wx.showModal({
+          title: '警告',
+          content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '../login/common',
+              })
+            }
+          }
+        })
       }
     })
+
   },
 
   //完善用户信息
@@ -174,6 +217,12 @@ Page({
 
       })
 
+  }, bindTextAreaBlur: function (e) {
+
+    //打印结果”是我是一个textarea”
+    this.setData({
+      piaoliutext: e.detail.value,
+    })
   },
 
   //抛出漂流瓶
@@ -184,14 +233,13 @@ Page({
     util.Requests_json(util.getBaseUrl() + API_POST_PIAOLIU, data)
       .then((res) => {
 
-       
       })
-  }, 
-  
-  //捡漂流瓶
-  onJianliuPao: function (e) {
+  },
 
-  
+  //捡漂流瓶
+  onJianliuPao: function(e) {
+
+
     util.Requests(util.getBaseUrl() + API_GET_PIAOLIU)
       .then((res) => {
         this.setData({
