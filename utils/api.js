@@ -50,10 +50,6 @@ function getHeader() {
 
   let csrftoken = wx.getStorageSync('csrftoken');
 
-  console.log('cookie :' + sessionid);
-
-  console.log('csrftoken :' + csrftoken);
-
   let header = {
     'Content-Type': 'application/json',
   };
@@ -82,10 +78,8 @@ function Requests_json(url, data) {
           if (res && res.header && res.header['Set-Cookie']) {
 
          
-            wx.setStorageSync('sessionid', getSessionId2(res.header['Set-Cookie'])); //
-
-            console.log('csrftoken :' + getSessionId(res.header['Set-Cookie']));
-            wx.setStorageSync('csrftoken', getSessionId(res.header['Set-Cookie'])); //
+            wx.setStorageSync('csrftoken', res.cookies[0].value);
+            wx.setStorageSync('sessionid', res.cookies[1].value); 
 
           }
 
@@ -121,34 +115,6 @@ function Requests_json(url, data) {
 }
 
 
-function getSessionId(cookie) {
-  var c_name = 'csrftoken';
-  if (cookie.length > 0) {
-    var c_start = cookie.indexOf(c_name + "=")
-    var c_end;
-    if (c_start != -1) {
-      c_start = c_start + c_name.length + 1
-      c_end = cookie.indexOf(";", c_start)
-      if (c_end == -1) c_end = cookie.length
-      return unescape(cookie.substring(c_start, c_end));
-    }
-  }
-}
-
-
-function getSessionId2(cookie) {
-  var c_name = 'sessionid';
-  if (cookie.length > 0) {
-    var c_start = cookie.indexOf(c_name + "=")
-    var c_end;
-    if (c_start != -1) {
-      c_start = c_start + c_name.length + 1
-      c_end = cookie.indexOf(";", c_start)
-      if (c_end == -1) c_end = cookie.length
-      return unescape(cookie.substring(c_start, c_end));
-    }
-  }
-}
 
 
 module.exports = {
