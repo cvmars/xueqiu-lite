@@ -37,7 +37,7 @@ margin-top:30pt;
 .left-item-child{
 
   border-radius: 20pt 0pt 0pt 20pt;
-  background-color: #333333;
+  background: #333333;
   margin-top: 10pt;
   margin-bottom: 10pt;
   padding-left: 15pt;
@@ -45,6 +45,7 @@ margin-top:30pt;
   animation-fill-mode: 10pt;
   color:#ffffff;
   font-size: 11pt;
+  opacity: 0.8;
 }
 .parent{
     font-size: 0;
@@ -218,10 +219,6 @@ z-index:1;
   backface-visibility: hidden;
 }
 
-.card-front{
-
-
-}
 
 .card-back{
 
