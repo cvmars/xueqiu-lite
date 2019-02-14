@@ -77,10 +77,15 @@ function Requests_json(url, data) {
 
           if (res && res.header && res.header['Set-Cookie']) {
 
-         
-            wx.setStorageSync('csrftoken', res.cookies[0].value);
-            wx.setStorageSync('sessionid', res.cookies[1].value); 
+         try{
 
+           wx.setStorageSync('csrftoken', res.cookies[0].value);
+           wx.setStorageSync('sessionid', res.cookies[1].value); 
+
+         }catch(e){
+
+         }
+      
           }
 
         if (res.data == "服务器异常") {
