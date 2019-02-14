@@ -31,7 +31,7 @@ Page({
             var request_time = res.data.results[index].create_at;
             var oldTime = (new Date(request_time)).getTime() / 1000;
 
-            var friendTime = util.formatTimeTwo(oldTime, 'M/D h:m');
+            var friendTime = util.formatTimeTwo(oldTime, 'M-D h:m');
             res.data.results[index].friendTime = friendTime;
           }
 

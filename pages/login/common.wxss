@@ -1,2 +1,6 @@
 /* pages/common/common.wxss */
 
+.btn-login{
+
+  margin: 15rpx;
+}

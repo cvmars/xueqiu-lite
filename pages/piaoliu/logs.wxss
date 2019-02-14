@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: column;
   top: 0;
+  position: relative;
 }
 
 .avator {
   width: 16pt;
   height: 16pt;
   align-content: center;
-  display:inline-block; 
-  border-radius:50%;
-  margin-left: 15pt; 
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 15pt;
 }
 
 .txt-time {
@@ -23,7 +24,7 @@
 
 .txt-name {
   font-size: 13pt;
-     margin-left: 12rpx;
+  margin-left: 15rpx;
   color: #004e66;
 }
 
@@ -32,9 +33,8 @@
   color: #383a3f;
   margin-left: 15pt;
   margin-right: 15pt;
-  display:inline-block; 
+  display: inline-block;
   margin-top: 10pt;
-
 }
 
 .line {
@@ -45,14 +45,12 @@
 }
 
 .info-txt {
- display:inline-block; 
- left: 30rpx;
-   align-content: center;
-   
+  display: inline-block;
+  left: 30rpx;
+  align-content: center;
 }
 
-.info{
-
- display:inline-flex; 
- margin-top: 20rpx;
+.info {
+  display: inline-flex;
+  margin-top: 20rpx;
 }

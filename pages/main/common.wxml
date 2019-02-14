@@ -1,9 +1,9 @@
 <view class='parent'>
 
 
- <image class = "main-avator" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+ <image class = "main-avator" src="{{userInfo.avatar_url}}" mode="cover"></image>
 
-<text class='main-text'>{{userInfo.nickName}}</text>
+<text class='main-text'>{{userInfo.name}}</text>
 
 <text class='main-update' bindtap='onInfo'> 更改个人资料</text> 
 

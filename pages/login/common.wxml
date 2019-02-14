@@ -1,17 +1,7 @@
 <view class = 'parent'>
 
 
-<view class = 'child'>
-
- 我的天
-</view>
-
-<view class = 'child'>
-
- 我的天
-</view>
-
-<button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
 
 
 </view>

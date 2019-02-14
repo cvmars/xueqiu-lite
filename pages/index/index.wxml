@@ -57,7 +57,7 @@
 <view class = "input-parent" hidden='{{pignzijianHidden}}' > 
 
 
-<view  class = "txt-pinzi-title"> 来自莲花的漂流瓶 </view>
+<view  class = "txt-pinzi-title"> 来自莲花的孔明灯 </view>
 
 
 <view  class = "txt-pinzi"> {{txtPingze}}</view>

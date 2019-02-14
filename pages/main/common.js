@@ -1,5 +1,8 @@
 //获取应用实例
 const app = getApp()
+const util = require('../../utils/api.js')
+const utilTime = require('../../utils/util.js')
+const API_USER_UPDATE = '/customer/profile/' //更改用户信息
 
 Page({
 
@@ -16,41 +19,23 @@ Page({
    */
   onLoad: function () {
 
-     this.setData({
-       userInfo: app.globalData.user
-     })
-
-    console.log("info :" + this.data.userInfo)
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-      
-    //     }
-    //   })
-    // }
-
+    this.getUserInfo();
 
     console.log('user:' + this.data.userInfo);
+  },//完善用户信息
+  getUserInfo: function (data) {
+
+
+    util.Requests(util.getBaseUrl() + API_USER_UPDATE, data)
+      .then((res) => {
+
+        this.setData({
+
+          userInfo: res.data,
+    
+        })
+      })
+
   },
 
   /**
