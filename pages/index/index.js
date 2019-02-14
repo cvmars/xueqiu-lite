@@ -291,7 +291,7 @@ Page({
     return {
       title: '来自莲花的孔明灯',
       path: '/pages/title/title',
-      imageUrl: '../../image/bg_piaoliu_share.jpg',
+      imageUrl: '../../image/bg_piaoliu_share.png',
       success: function(res) {
         // 转发成功
       },
@@ -304,8 +304,8 @@ Page({
     //右上角分享
     return {
       title: '莲花雪球',
-      path: `pages/index/index`,
-      imageUrl: ``,
+      path: 'pages/index/index',
+      imageUrl: '../../image/bg_piaoliu_share.png',
       success: function(res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
