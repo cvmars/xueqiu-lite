@@ -172,7 +172,17 @@ z-index:1;
   height: 120pt;
   padding-left: 6pt;
   padding-top: 6pt;
+  font-size: 11pt;
+  margin-top: 10dp;
+  color: #666666;
+}
+.txt-pinzi-title{
+  width: 140pt;
+  padding-left: 6pt;
+  padding-top: 6pt;
   font-size: 13pt;
+  color: #333;
+  margin-top: 10dp;
 }
 
 .wrapper{

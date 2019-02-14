@@ -1,7 +1,7 @@
 //logs.js
 const util = require('../../utils/util.js')
 const api = require('../../utils/api.js')
-const API_PIAOLIU_LIST = '/bottles/picked/lists/'
+const API_PIAOLIU_LIST = '/api/bottles-picked/'
 
 
 Page({

@@ -7,7 +7,7 @@
 
 <button class='left-item-child' open-type ='share' >邀请好友</button>
 
-<button class='left-item-child' bindtap='onAbout'> 关于我们</button>
+<button class='left-item-child' bindtap='onAbout'>我要相亲</button>
 
 </view>
 
@@ -54,16 +54,19 @@
 
 
 
-<view class = "input-parent" hidden='pignzijianHidden' > 
+<view class = "input-parent" hidden='{{pignzijianHidden}}' > 
 
 
-<view  class = "txt-pinzi"> 分享内容</view>
+<view  class = "txt-pinzi-title"> 来自莲花的漂流瓶 </view>
+
+
+<view  class = "txt-pinzi"> {{txtPingze}}</view>
 
 
 
 
 
-<button bindtap='onSubPiaoliu' class = "btn-piaoliu"> 确定 </button>
+<button bindtap='onOKPiaoliu' class = "btn-piaoliu"> 确定 </button>
  
 </view>
 
@@ -93,6 +96,6 @@
 
 
 
-
+<official-account></official-account>
 
 </view>

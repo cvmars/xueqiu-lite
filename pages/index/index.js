@@ -17,6 +17,7 @@ Page({
     pignziHidden: true,
     pignzijianHidden: true,
     konghidden: true,
+    txtPingze:'',
     piaoliutext: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -35,19 +36,11 @@ Page({
     })
   },
 
+  
+
+
   onSubPiaoliu: function(e) {
     this.onPiaoliuPao();
-    this.setData({
-      piaoliutext: '',
-      inputHidden: true,
-      pignziHidden: true,
-      konghidden: false
-    })
-
-    wx.showToast({
-      icon: 'success',
-      title: '发送成功',
-    })
 
   },
   onNearby: function(e) {
@@ -170,12 +163,12 @@ Page({
               console.log(this)
               that.onUpdateUserInfo(data);
             },
-            fail: function () {
+            fail: function() {
               //获取用户信息失败后。请跳转授权页面
               wx.showModal({
                 title: '授权登陆',
                 content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
-                success: function (res) {
+                success: function(res) {
                   if (res.confirm) {
                     console.log('用户点击确定')
                     wx.navigateTo({
@@ -217,7 +210,8 @@ Page({
 
       })
 
-  }, bindTextAreaBlur: function (e) {
+  },
+  bindTextAreaBlur: function(e) {
 
     //打印结果”是我是一个textarea”
     this.setData({
@@ -228,23 +222,55 @@ Page({
   //抛出漂流瓶
   onPiaoliuPao: function(e) {
 
+    let that = this;
     let data = {};
     data['text'] = this.data.piaoliutext;
-    util.Requests_json(util.getBaseUrl() + API_POST_PIAOLIU, data)
-      .then((res) => {
+    if (!this.data.piaoliutext) {
 
+      wx.showToast({
+  
+        title: '内容不能为空',
       })
+      return;
+    }else{
+      this.setData({
+        piaoliutext: '',
+        inputHidden: true,
+        pignziHidden: true,
+        konghidden: false
+      })
+
+      util.Requests_json(util.getBaseUrl() + API_POST_PIAOLIU, data)
+        .then((res) => {
+          wx.showToast({
+            icon: 'success',
+            title: '发送成功',
+          })
+          that.onShareAppMessage()
+        })
+    }
+   
   },
 
+  onOKPiaoliu:function(e){
+
+    this.setData({
+
+      pignzijianHidden: true,
+      txtPingze: ''
+    })
+  },
   //捡漂流瓶
   onJianliuPao: function(e) {
 
 
     util.Requests(util.getBaseUrl() + API_GET_PIAOLIU)
       .then((res) => {
+        
         this.setData({
 
-          // pignziHidden: true
+          pignzijianHidden: false,
+          txtPingze : res.data.text
         })
 
         // wx.showToast({
@@ -258,8 +284,8 @@ Page({
   onShareAppMessage: function(res) {
     // if (res.from === 'view') {
     // 来自页面内转发按钮
-    console.log(res.target.id)
-    console.log(res.from)
+    // console.log(res.target.id)
+    // console.log(res.from)
     //区分按钮分享
     // if (res.target.id === "btn") {
     return {
