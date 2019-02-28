@@ -77,14 +77,9 @@ function Requests_json(url, data) {
 
           if (res && res.header && res.header['Set-Cookie']) {
 
-         try{
+            wx.setStorageSync('sessionid', getSessionId2(res.header['Set-Cookie'])); 
+            wx.setStorageSync('csrftoken', getSessionId(res.header['Set-Cookie']));
 
-           wx.setStorageSync('csrftoken', res.cookies[0].value);
-           wx.setStorageSync('sessionid', res.cookies[1].value); 
-
-         }catch(e){
-
-         }
       
           }
 

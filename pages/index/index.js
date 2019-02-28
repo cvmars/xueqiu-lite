@@ -288,23 +288,23 @@ Page({
     // console.log(res.from)
     //区分按钮分享
     // if (res.target.id === "btn") {
-    return {
-      title: '来自莲花的孔明灯',
-      path: '/pages/title/title',
-      imageUrl: '../../image/bg_piaoliu_share.png',
-      success: function(res) {
-        // 转发成功
-      },
-      fail: function(res) {
-        // 转发失败
-      }
-    }
+    // return {
+    //   title: '来自莲花的孔明灯',
+    //   path: '/pages/title/title',
+    //   imageUrl: '../../image/bg_piaoliu_share.png',
+    //   success: function(res) {
+    //     // 转发成功
+    //   },
+    //   fail: function(res) {
+    //     // 转发失败
+    //   }
+    // }
     // }
     // }
     //右上角分享
     return {
       title: '莲花雪球',
-      path: 'pages/index/index',
+      path: '/pages/index/index',
       imageUrl: '../../image/bg_piaoliu_share.png',
       success: function(res) {
         // 转发成功
