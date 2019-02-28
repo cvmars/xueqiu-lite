@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/info/common",
     "pages/logs/logs",
+    "pages/index/index",
+    "pages/pseron/common",
+    "pages/see/common",
+    "pages/info/common",
     "pages/main/common",
     "pages/common/common",
     "pages/login/common",

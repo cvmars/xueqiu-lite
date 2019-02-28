@@ -1,0 +1,35 @@
+<!--pages/pseron/common.wxml-->
+<view class = "parent">
+
+<view style='height : 15vh'></view>
+
+
+<view class = "content">
+
+
+<view class = "info-avator">
+
+<image class="avator" src="{{user.avatar_url}}" mode='aspectFill'>
+
+</image>
+
+</view>
+
+ <text class="userinfo">{{user.name ? user.name :"莲花的娃"}}</text>
+
+<view>
+
+</view >
+<view class = "info-sex">
+{{user.gender == 1 ? '男' : '女'}} · {{user.age ? user.age : 21}} · {{user.address_home ? user.address_home : '琴亭镇'}}
+ </view>
+
+
+<text class = "btn-send" bindtap='sendWx'>索要微信</text>
+
+
+</view>
+
+
+ 
+</view>

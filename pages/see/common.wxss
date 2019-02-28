@@ -1,0 +1,48 @@
+/* pages/common/common.wxss */
+
+.itemview {
+  position: relative;
+  display: flex;
+  margin-top: 5rpx;
+}
+
+.avator {
+  width: 46pt;
+  height: 46pt;
+  margin-top: 6rpx;
+  align-content: center;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 15pt;
+}
+
+.right {
+  position: absolute;
+  right: 15rpx;
+  color: #666;
+  font-size: 11pt;
+}
+
+.line_10 {
+  width: 100vw;
+  height: 1rpx;
+  background-color: #eee;
+}
+.right{
+  font-size: 12pt;
+margin-top: 15rpx;
+}
+
+.userinfo {
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  max-width: 130pt;
+   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+  font-size: 12pt;
+  color: #333;
+}
+
+

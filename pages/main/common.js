@@ -52,6 +52,11 @@ wx.navigateTo({
   url: '../info/common',
 })
 
+  }, onWhoSeeMe:function(e){
+
+    wx.navigateTo({
+      url: '../see/common',
+    })
   },
 
   /**

@@ -1,8 +1,33 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  <view class="list-item" wx:for="{{results}}"  wx:for-item= "user">
+<view>
+<text class="recommend">今日推荐 </text>
+<text class = "zhiding" bindtap = "onTop">我要置顶</text>
+</view>
+<view class="header">
 
-    <view>
+  <scroll-view scroll-x="true" style=" white-space: nowrap;margin-top:10pt">
+    <view style=" height:140pt;width: 80pt ;display: inline-block ;margin-left : 10pt;" wx:for="{{results}}" wx:for-item="user">
+
+      <view bindtap="readDetail" data-id="{{user.id}}">
+
+        <image class="header-avator" src="{{user.avatar_url}}" mode='aspectFill'>
+        </image>
+
+        <view class="item-user">
+          <text class="zhiding-userinfo">{{user.name ? user.name :"莲花的娃"}} </text>
+
+        </view>
+
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="container log-list">
+
+  <view class="list-item" wx:for="{{results}}" wx:for-item="user">
+
+    <view bindtap="readDetail" data-id="{{user.id}}">
 
       <image class="avator" src="{{user.avatar_url}}" mode='aspectFill'>
       </image>

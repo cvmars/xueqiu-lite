@@ -17,6 +17,17 @@ Page({
     this.getPiaoliuList();
   },
 
+  readDetail: function (e) {
+
+    var id = e.currentTarget.dataset.id;
+    console.log('id : ' + id);
+
+    wx.navigateTo({
+      url: '../pseron/common?id=' + id
+    })
+
+  },
+
   getPiaoliuList: function(e) {
 
 

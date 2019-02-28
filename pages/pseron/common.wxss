@@ -1,0 +1,56 @@
+/* pages/pseron/common.wxss */
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avator {
+  width: 100pt;
+  height: 100pt;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.userinfo {
+  margin-top: 15rpx;
+}
+
+.info-sex {
+  margin-top: 15rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  padding-top: 50pt;
+  padding-bottom: 80pt;
+  padding-left: 50pt;
+  padding-right: 50pt;
+  border-radius: 8pt;
+  /* border: 1px solid #666; */
+  box-shadow: 2px 2px 2px #ccc;
+  position: relative;
+}
+
+.btn-send {
+  border-radius: 4pt;
+  color: #666;
+  position: absolute;
+  bottom: 0rpx;
+  width: 100%;
+  text-align: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: #f7fff7;
+}
+
+btn-send:active {
+  background-color: olive;
+}

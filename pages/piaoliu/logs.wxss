@@ -31,10 +31,11 @@
 .txt-content {
   font-size: 13pt;
   color: #383a3f;
-  margin-left: 15pt;
+  margin-left: 35pt;
   margin-right: 15pt;
   display: inline-block;
-  margin-top: 10pt;
+  margin-top: 15pt;
+  margin-bottom: 10pt;
 }
 
 .line {

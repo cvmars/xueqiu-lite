@@ -1,0 +1,26 @@
+<view class="list-item" wx:for="{{results}}" wx:for-item="user">
+
+
+  <view class='itemview' bindtap="readDetail" data-id="{{user.customer.id}}">
+
+    <view class="left">
+
+      <image class="avator" src="{{user.customer.avatar_url}}" mode='aspectFill'>
+      </image>
+
+    </view>
+
+
+      <text class="userinfo">{{user.customer.name ? user.customer.name :"莲花的娃"}} </text>
+
+
+      <text class="right">{{user.friendTime}}</text>
+
+    <view>
+
+    </view>
+
+  </view>
+
+  <view class='line_10'> </view>
+</view>
