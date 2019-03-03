@@ -1,6 +1,9 @@
 {
   "pages": [
-        "pages/index/index",
+   
+    "pages/index/index",
+    "pages/product/common",
+    "pages/pdetail/common",
     "pages/logs/logs",
     "pages/pseron/common",
     "pages/see/common",
@@ -29,6 +32,12 @@
       {
         "pagePath": "pages/logs/logs",
         "text": "最近在线",
+        "iconPath": "image/main_tab_item_icon2.png",
+        "selectedIconPath": "image/main_tab_item_icon2_selected.png"
+      },
+      {
+        "pagePath": "pages/product/common",
+        "text": "莲花店铺",
         "iconPath": "image/main_tab_item_icon2.png",
         "selectedIconPath": "image/main_tab_item_icon2_selected.png"
       },

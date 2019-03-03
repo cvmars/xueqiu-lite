@@ -1,0 +1,156 @@
+/* pages/common/common.wxss */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.list-header{
+margin-top: 30rpx;
+
+}
+.header-avator{
+
+  width: 60pt;
+  height: 60pt;
+}
+.item-user{
+  display: flex;
+  width: 60pt;
+}
+
+.zhiding-userinfo{
+
+font-size: 25rpx;
+color: #333;
+font-weight: normal;
+margin-top: 40rpx;
+margin:auto;
+}
+.product-coment-nav{
+
+margin-top: 20rpx;
+
+}
+.product-coment-title{
+
+font-size: 30rpx;
+color: #333;
+font-weight: bold;
+margin-left: 30rpx;
+margin-top: 40rpx;
+
+}
+
+.product-coment-number{
+
+  font-size: 30rpx;
+  color: #666;
+  margin-left: 5rpx;
+}
+
+.company-info{
+  font-size: 30rpx;
+color: #333;
+font-weight: bold;
+margin-left: 30rpx;
+margin-top: 40rpx;
+
+}
+
+.product_recommend{
+
+font-size: 30rpx;
+color: #333;
+font-weight: bold;
+margin-top: 40rpx;
+}
+
+.company_zhige{
+
+font-size: 28rpx;
+color: #333;
+padding-top: 30rpx;
+margin-bottom: 30px;
+font-weight: normal;
+}
+
+.product{
+
+  display: flex;
+  margin-top: 15rpx;
+}
+
+.product-image{
+
+  width :50pt;
+  height:40pt;
+  margin-left: 10rpx;
+  margin-right: 30rpx
+}
+
+.product-name{
+
+  font-size: 40rpx;
+color: #333;
+font-weight: bold;
+}
+
+ .product-info
+{
+
+width: 100%;
+display:flex;
+align-items:center;
+margin-top: 10rpx;
+position: relative;
+
+}
+.product-type{
+
+
+font-size: 20rpx;
+color: #666;
+}
+
+.product-item{
+
+  flex: 1;
+  margin-left: 30rpx;
+}
+
+.product-scan{
+
+  margin-left: 25rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+.product-desc{
+  font-size: 26rpx;
+  color: #333;
+  margin-top: 15rpx;
+  margin-left: 2rpx;
+
+}
+
+.product-address{
+
+  font-size: 25rpx;
+  color: #000;
+  margin-top: 10rpx;
+  display: flex;
+  align-items:center;
+}
+.product-img-location{
+
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.product-line{
+
+  height: 1px;
+  width: 100%;
+  background: #eee;
+  margin-top: 25rpx;
+}

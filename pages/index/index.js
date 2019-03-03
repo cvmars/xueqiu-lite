@@ -303,9 +303,9 @@ Page({
     // }
     //右上角分享
     return {
-      title: '莲花雪球',
+      title: '邯郸小红娘',
       path: '/pages/index/index',
-      imageUrl: '../../image/bg_piaoliu_share.png',
+      // imageUrl: '../../image/bg_piaoliu_share.png',
       success: function(res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));

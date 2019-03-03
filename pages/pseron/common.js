@@ -12,7 +12,8 @@ Page({
    */
   data: {
 
-    user: {}
+    user: {},
+    userid:''
   },
 
   /**
@@ -22,6 +23,15 @@ Page({
 
     console.log("options :" + options.id)
     this.getLastPerson(options.id);
+    // this.setData({
+
+    //   userid = options.id
+    // })
+    let that = this;
+    that.setData({
+      userid: options.id
+    })
+
   },
   getLastPerson: function(e) {
 
@@ -38,7 +48,7 @@ Page({
 
   sendWx: function(e) {
     wx.showToast({
-      title: '索要微信',
+      title: '请下载app',
     })
   },
 
@@ -87,7 +97,25 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
 
+    let that = this;
+    //右上角分享
+    return {
+      title: '我在莲花雪球的等你',
+      path: 'pages/pseron/common?id=' + that.data.userid,
+      // imageUrl: '../../image/bg_piaoliu_share.png',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   }
 })

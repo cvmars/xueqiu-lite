@@ -1,6 +1,6 @@
 <view>
 
-<view class = "about-text" >邯郸小红娘建设的初衷是为了搭建莲花县多元化社交环境，致力打招邯郸的移动社交网络，集职业技能、社交、相亲、当地服务于一身。希望大家维持社区的友好环境。</view>
+<view class = "about-text" >邯郸小红娘建设的初衷是为了搭建邯郸市多元化社交环境，致力打招邯郸的移动社交网络，集职业技能、社交、相亲、当地服务于一身。希望大家维持社区的友好环境。</view>
 
 
 <!-- <image class = "qcode" src='../../image/ic_erweima.png' mode='aspectFit'></image> -->

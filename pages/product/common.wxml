@@ -1,0 +1,40 @@
+<view class = 'parent'>
+
+ <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="user">
+
+
+<view class = "product">
+
+
+<image class = "product-image" src='../../image/shangjia.png'>
+
+</image>
+
+
+<view class = "product-item">
+
+<view class = "product-name">莲花血鸭馆</view>
+
+<view class = "product-info">
+<text class = "product-type">特产店</text>
+
+<text class = "product-scan">100人浏览过</text>
+</view>
+
+<view class = "product-desc">
+ 我的店是天下第一好店
+</view>
+<view>
+
+<view class = "product-address">
+ 江西省萍乡市莲花县
+</view>
+</view>
+</view>
+
+</view>
+
+ <view class = "product-line"> </view>
+</view>
+
+</view>

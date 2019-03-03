@@ -1,4 +1,9 @@
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
 
 .recommend{
 
@@ -6,6 +11,7 @@ margin-left: 10pt;
 font-size: 10pt;
 color: #f57c00;
 }
+
 
 .zhiding{
 
