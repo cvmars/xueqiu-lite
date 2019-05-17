@@ -1,0 +1,49 @@
+<!--logs.wxml-->
+
+<view class="container log-list">
+
+  <view class="list-item" wx:for="{{results}}" wx:for-item="user" >
+
+
+  <view data-index="{{index}}" class = "car-center" bindtap='onCarDetail'>
+  
+  <view class = "car-left">
+  <view >
+
+  <text class="car-title">从</text>
+  <text class="car-content">{{user.car_out_address1}} {{user.car_out_address2}}</text>
+  </view>
+
+   <view class = "car-info">
+
+  <text class = "car-title">到</text>
+  <text class = "car-content">{{user.car_order_address1}} {{user.car_order_address2}}</text>
+  </view>
+
+
+   <view class = "car-info">
+
+  <text class = "car-title">时间</text>
+  <text class = "car-content">{{user.car_time}}</text>
+  </view>
+
+   <view class = "car-info">
+
+  <text class = "car-title">剩余</text>
+  <text class = "car-content">{{user.car_number}}座</text>
+  </view>
+
+ <view class= "item-clear" data-index="{{index}}" catchtap='onClear'>删除</view>
+   </view>
+
+<!-- <view class = "car-right">
+  已出行
+  </view> -->
+
+   </view>
+
+  </view>
+  <official-account></official-account>
+
+  <image bindtap = "onPublish" class = "phblish"src='../../image/ic_publish.png'></image>
+</view>

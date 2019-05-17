@@ -1,95 +1,189 @@
 <view class = 'parent'>
 
- <view class="list-header" >
+<view class = "product-banner">
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
+      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper> 
 
-<view class = "product">
-
-<view class = "product-item">
-
-<view class = "product-name">莲花血鸭馆</view>
-
-<view class = "product-info">
-<text class = "product-type">特产店</text>
-
-<text class = "product-scan">100人浏览过</text>
-</view>
-
-<view class = "product-desc">
- 我的店是天下第一好店
-</view>
-<view>
-
-<view class = "product-address">
-
-<image class = "product-img-location"src='../../image/location_product.png'></image>
-
-<view>  江西省萍乡市莲花县 </view>
-
-</view>
-</view>
+    <view class = "hot-shop"> 
+    
+    <image class = "hot-shop-img" src='../../image/icon_hot.png'></image>
+    <text class = "hot-text">100</text>
+    </view>
 </view>
 
 
-<image class = "product-image" src='../../image/shangjia.png'>
+
+
+<view class = "product" >
+
+
+<image class = "product-image" src='{{carinfo.shop_url}}' mode="aspectFit">
 
 </image>
 
-
-</view>
-
-</view>
-
-
-<view class = "company-info"> 
-
-
 <view>
+
+<view class = "product-name">{{carinfo.shop_name}}</view>
+
+<view class = "product-info">
+<text class = "product-type">{{carinfo.shop_type}}</text>
+
+
+</view>
+
+<view class = "product-address">
+
+
+<view>   </view>
+
+</view>
+
+<view class = "product-desc">
+ {{carinfo.shop_dec}}
+</view>
+<view>
+
+
+
+
+</view>
+</view>
+
+</view>
+
+ <view class = "product-line"> </view>
+
+
+<!-- <view>
 商家信息
+</view> -->
+
+<!-- <view class = "company_zhige" >营业许可资源</view> -->
+<!-- <view>
+
+</view> -->
+
+<!-- <view class = "product_recommend">  -->
+
+
+
+
+
+
+<!-- 店铺信息 -->
+
+<view class = "product-item">
+  
+  <view class="product_recommend">
+店铺信息
 </view>
 
-<view class = "company_zhige" >营业许可资源</view>
-<view>
+ 
+ <view class = "product-info-item"> 
+ 
+ <image class = "product-info-item-icon" src='../../image/icon_phone.png'></image>
+ <text class = "product-info-item-title">电话</text>
+  <text class = "product-info-item-content">13777477649</text>
+   <image bindtap = "onCall" class = "product-info-item-icon1" src='../../image/icon_call.png'></image>
+ </view>
+   
+
+    <view class = "product-line1"> </view>
+
+    
+    <view class = "product-info-item"> 
+ 
+ <image class = "product-info-item-icon" src='../../image/icon_weixin.png'></image>
+ <text class = "product-info-item-title">微信</text>
+  <text class = "product-info-item-content">13777477649</text>
+   <image class = "product-info-item-icon1" src='../../image/icon_copy.png' bindtap='onCopy'></image>
+ </view>
+
+ <view class = "product-line1"> </view>
+
+  <view class = "product-info-item"> 
+ 
+ <image class = "product-info-item-icon" src='../../image/location_product.png'></image>
+ <text class = "product-info-item-title">地址</text>
+  <text class = "product-info-item-content"> {{carinfo.shop_address}}</text>
+
+ </view>
 
 </view>
 
-<view class="product_recommend">
+
+
+ <view class = "product-line"> </view>
+
+<view class="product_recommend1">
 推荐商品
 </view>
 
- <scroll-view scroll-x="true" style=" white-space: nowrap;margin-top:10pt">
-    <view style="width: 80pt ;display: inline-block ;margin-left : 10pt;" wx:for="{{results}}" wx:for-item="user">
+ <!-- <scroll-view scroll-x="true" style=" white-space: nowrap;margin-top:10pt">
+    <view style="width: 100pt ;display: inline-block ;margin-left : 10pt;" wx:for="{{products}}" wx:for-item="product">
 
       <view bindtap="readDetail" data-id="{{user.id}}">
 
-        <image class="header-avator" src="../../image/shangjia.png" mode='aspectFill'>
+        <image class="header-avator" src="{{product.product_url}}" mode='aspectFill'>
         </image>
 
         <view class="item-user">
-          <text class="zhiding-userinfo">{{user.name ? user.name :"莲花的娃"}} </text>
-
+          <text class="zhiding-userinfo">{{product.product_name}}</text>
         </view>
-
       </view>
     </view>
-  </scroll-view>
+  </scroll-view> -->
 
+ <view class = "product-back">
+ <view class="free-WaterfallFlow">
+      
+        <view class="flex-wrap" wx:for="{{products}}"   bindtap='onProductDetail' wx:for-item="product">
+      
+            <view bindtap="readDetail" data-id="{{user.id}}">
 
+        <image class="header-avator" src="{{product.product_url}}" mode='aspectFill'>
+        </image>
 
+        <view class="item-user">
+          <text class="zhiding-userinfo">{{product.product_name}}</text>
+        </view>
 
-</view>
+        <view class = "product-price">
+    
+        <view class = "product-txt-price">¥ 1322</view>
+
+         <image bindtap = "onCall" class = "product-info-item-icon3" src='../../image/icon_shop_car.png'></image>
+        </view>
+      </view>
+        </view>
+  
+     
+    </view>
+ </view>
+ <!-- </view> -->
+
 
 
 <view class = "product-comment">
 
- <view class = "product-coment-nav">
+ <!-- <view class = "product-coment-nav">
 
  <text class = "product-coment-title">用户评论</text>
  
  <text class = "product-coment-number">(35条)</text>
- </view>
+ </view> -->
+</view>
 
+<view class = "product-bottom">
 
- 
+<button class='shop-share-btn'>点赞</button>
+
+<button class='shop-share-btn-right'>分享</button>
 
 </view>
 </view>

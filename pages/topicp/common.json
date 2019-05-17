@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发布动态",
+  "usingComponents": {
+    "dialog": "/components/dialog-wxapp/dialog"
+  }
+}

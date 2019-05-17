@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "莲花拼车",
+    "usingComponents": {
+      "dialog": "/components/dialog-wxapp/dialog"
+    }
+}

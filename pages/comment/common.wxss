@@ -1,0 +1,162 @@
+/* pages/common/common.wxss */
+
+.parent{
+
+  margin-bottom: 100rpx;
+}
+
+.input_null{
+    color: #C9C9C9;
+}
+
+.release{
+    display: flex;
+    align-items: flex-end; /*底部对齐*/
+    justify-content: space-between; /*两端对齐*/
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 18rpx 0 18rpx 30rpx;
+    background-color: #F7F8F7;
+    font-size: 28rpx;
+    z-index: 999;
+}
+
+
+
+
+
+.release .text{
+    width: 604rpx;
+    min-height: 44rpx;
+    max-height: 102rpx; /*最多显示三行*/
+    border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+    border-style: solid;
+    border-color:  #ffffff;
+    line-height: 34rpx;
+    font-size: 32rpx;
+    background-color: #ffffff;
+    border-radius: 4rpx;
+}
+.release .submit{
+    width: 116rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+    color: #66CC00;
+}
+
+
+.product{
+
+  display: flex;
+  margin-top: 15rpx;
+}
+
+.product-image{
+
+  width :30pt;
+  height:30pt;
+  margin-left: 30rpx;
+  border-radius: 50%;
+}
+
+.product-image-item{
+
+  width :100pt;
+  height:100pt;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  display:-webkit-inline-flex;
+
+}
+.phblish{
+
+  position: fixed;
+  bottom: 60rpx;
+  right: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.product-time{
+
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 28rpx;
+}
+
+.comment{
+
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  display:block;
+}
+
+.product-name{
+
+font-size: 30rpx;
+color: #333;
+font-weight: bold;
+}
+
+ .product-info
+{
+
+width: 100%;
+ display:flex;
+align-items:center;
+margin-top: 10rpx;
+position: relative;
+
+}
+.product-type{
+
+
+font-size: 20rpx;
+color: #fff;
+background: #ff6600;
+padding-left: 4px;
+padding-right: 4px;
+border-radius:10px;
+padding: 2dp;
+}
+
+.product-item{
+
+  flex: 1;
+  margin-left: 20rpx;
+  position: relative;
+}
+
+.product-scan{
+
+  position: absolute;
+  right: 15rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+.product-desc{
+  font-size: 25rpx;
+  color: #333;
+  margin-top: 20rpx;
+
+}
+
+.product-address{
+
+  font-size: 25rpx;
+  color: #000;
+  margin-top: 10rpx;
+}
+
+.product-line{
+
+  height: 1px;
+  width: 100%;
+  background: #eee;
+  margin-top: 25rpx;
+}

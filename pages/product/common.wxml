@@ -1,33 +1,141 @@
 <view class = 'parent'>
 
- <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="user">
+
+<view class='home-sroll'>
 
 
-<view class = "product">
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
+      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper> 
+
+    <view class = "swiper-bottom">
+    </view>
+
+</view>
+
+<view class = "item-shop">
+
+  <!-- <block> -->
+
+  <view class = "shop-item-lianhua" bindtap='onProductList'>
+  
+  <image src='../../image/icon_shop_tab1.png' class = "image-shop"></image>
+  <text class = "item-shop-text">特产店</text>
+  </view>
+
+  <!-- </block> -->
 
 
-<image class = "product-image" src='../../image/shangjia.png'>
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/icon_shop_tab2.png' class = "image-shop"></image>
+  <text class = "item-shop-text">婚庆服务</text>
+  </view>
+
+
+
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/icon_shop_tab3.png' class = "image-shop"></image>
+  <text class = "item-shop-text"> 酒席预定</text>
+  </view>
+
+
+
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/icon_shop_tab4.png' class = "image-shop"></image>
+  <text class = "item-shop-text">约车服务</text>
+  </view>
+
+</view>
+
+
+
+
+<view>
+
+<view class= "shop-title">
+推荐店铺
+</view>
+
+<!-- 推荐店铺-->
+<view class="shop-recommend-item">
+
+ <view wx:for="{{imgUrls}}" wx:for-index="index">  
+
+
+
+<view class='shop-recommend-product'>
+
+  
+  <image src='../../image/icon_shop_tab1.png' class = "image-shop"></image>
+  <text class = "item-product-text">特产店</text>      
+     </view>  
+</view>
+
+</view>
+
+<!--11-->
+<view class="shop-recommend-item">
+
+ <view wx:for="{{imgUrls}}" wx:for-index="index">  
+
+
+
+<view class='shop-recommend-product'>
+
+  
+  <image src='../../image/icon_shop_tab1.png' class = "image-shop"></image>
+  <text class = "item-product-text">特产店</text>      
+     </view>  
+</view>
+
+</view>
+<!--22-->
+</view>
+
+
+<!--推荐产品-->
+
+<view class= "shop-title">
+推荐商品
+</view>
+
+
+
+
+ <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="shop" data-index="{{index}}">
+
+
+<view class = "product" >
+
+
+<image class = "product-image" src='{{shop.shop_url}}' mode="aspectFit">
 
 </image>
 
 
 <view class = "product-item">
 
-<view class = "product-name">莲花血鸭馆</view>
+<view class = "product-name">{{shop.shop_name}}</view>
 
 <view class = "product-info">
-<text class = "product-type">特产店</text>
+<text class = "product-type">{{shop.shop_type}}</text>
 
-<text class = "product-scan">100人浏览过</text>
 </view>
 
 <view class = "product-desc">
- 我的店是天下第一好店
+ {{shop.shop_dec}}
 </view>
 <view>
 
 <view class = "product-address">
- 江西省萍乡市莲花县
+  {{shop.shop_address}}
 </view>
 </view>
 </view>

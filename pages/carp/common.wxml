@@ -1,0 +1,114 @@
+<view class = 'parent'>
+
+   <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}"  >
+
+ <view class = "car-item">
+ 
+ <view class = "car-left">
+ <text class = "car-title1">从</text>
+
+ </view>
+
+
+ <view class = "car-input2" >{{out_address1}}</view>
+
+
+ </view>
+ </picker>
+
+  <view class = "car-item">
+ 
+ <view class = "car-left">
+
+ </view>
+ 
+ <input class = "car-input" placeholder="选填，上车地址"
+  value='{{out_address2}}' bindinput="getOutAddress2" ></input>
+ </view>
+
+
+
+  <picker mode="region" bindchange="bindRegionChange2" value="{{region}}" custom-item="{{customItem}}" >
+
+<view class = "car-item">
+ 
+ <view class = "car-left">
+
+ <text class = "car-title3">到</text>
+
+ </view>
+ 
+ <view class = "car-input2" placeholder=''>{{order_address1}}</view>
+
+ </view>
+</picker>
+
+  <view class = "car-item">
+ 
+ <view class = "car-left">
+
+ </view>
+ 
+ <input class = "car-input" placeholder="选填，目的地址"
+  bindinput="getOrderAddress2" ></input>
+  
+ </view>
+
+
+
+  <picker mode="date" value="{{car_time}}" start="2019-04-01" end="2030-09-01" bindchange="bindDateChange">
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">出发时间</text>
+
+ <view class = "car-input2" placeholder=''>{{car_time}}</view>
+ </view>
+
+   </picker>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">座位 </text>
+
+ <input class = "car-input" type = "number" placeholder='输入剩余座位' bindinput="getCarNumber"></input>
+ </view>
+
+ 
+  <view class = "car-item">
+ 
+ <text class = "car-title2"> 联系人</text>
+
+ <input class = "car-input" placeholder='输入联系人'
+ bindinput="getCarName" ></input>
+ </view>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">手机号</text>
+
+ <input class = "car-input" 
+ bindinput="getCarPhone"  type = "number" placeholder='输入手机号'></input>
+ </view>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">特殊说明</text>
+
+ <input class = "car-input" placeholder='选填' bindinput="getCarAbout" ></input>
+ </view>
+
+
+ <text class = "car_publish" bindtap='publish'>发布</text>
+
+</view>
+
+
+ <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+ 
+
+    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
+
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    
+</dialog>

@@ -1,0 +1,59 @@
+<view class = 'parent'>
+
+
+
+<view class = "product-banner">
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
+      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper> 
+
+    <view class = "hot-shop"> 
+    
+    <image class = "hot-shop-img" src='../../image/icon_hot.png'></image>
+    <text class = "hot-text">100</text>
+    </view>
+</view>
+
+<text>标题标题标题标题标题标题标题标题标题标题标题标题标题标题</text>
+
+<view>
+
+<text>¥123／份</text>
+
+
+<text>111人浏览</text>
+
+</view>
+
+
+ <view class = "product-line"> </view>
+
+
+ <view class = "info-product">
+  
+  <view class = "info-product-item">
+  
+<text>联系卖家</text>
+  </view>
+
+  <view class = "info-product-item">
+  
+
+<text>进入店铺</text>
+  </view>
+
+
+ 
+ </view>
+
+
+  <view class = "product-line"> </view>
+
+
+<web-view src = "http://agent.lhxq.top:8080/static/register/index.html"></web-view>
+
+</view>

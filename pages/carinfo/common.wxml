@@ -1,0 +1,88 @@
+
+<view class = 'parent'>
+
+
+<view>
+
+
+ <view class = "car-item">
+ 
+ <view class = "car-left">
+ <text class = "car-title1">从</text>
+
+ </view>
+ 
+ <text class = "car-input" placeholder=''>{{carinfo.car_out_address1}} {{carinfo.car_out_address2}}</text>
+ </view>
+
+
+
+<view class = "car-item">
+ 
+ <view class = "car-left">
+ <text class = "car-title3">到</text>
+
+ </view>
+ 
+ <text class = "car-input" placeholder=''>{{carinfo.car_order_address1}} {{carinfo.car_order_address2}}</text>
+ </view>
+
+
+
+
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">出发时间</text>
+
+ <text class = "car-input" placeholder=''>{{carinfo.car_time}}</text>
+ </view>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">座位 </text>
+
+ <text class = "car-input" placeholder=''>{{carinfo.car_number}}座</text>
+ </view>
+
+ 
+  <view class = "car-item">
+ 
+ <text class = "car-title2"> 联系人</text>
+
+ <text class = "car-input" placeholder=''>{{carinfo.car_name}}</text>
+ </view>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">手机号</text>
+
+ <text class = "car-input"  placeholder=''>{{carinfo.car_phone}}</text>
+ </view>
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">特殊说明</text>
+
+ <text class = "car-input" placeholder=''>{{carinfo.car_about}}</text>
+ </view>
+</view>
+
+
+ <button class = "car_publish" open-type ='share' >分享</button>
+
+
+   <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+ 
+
+    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
+
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    
+  </dialog>
+  
+
+  <view hidden='{{hiddenHome}}' bindtap='backHome' class = "car-right">
+  回首页
+  </view> 
+</view>

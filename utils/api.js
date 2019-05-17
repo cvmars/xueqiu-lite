@@ -4,9 +4,7 @@ function  getBaseUrl(){
   return 'https://test.lhxq.top';
 }
 
-
 function Requests(url, data) {
-
 
   var header = getHeader();
 

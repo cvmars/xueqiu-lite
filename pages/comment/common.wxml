@@ -1,0 +1,106 @@
+
+
+<view class = 'parent'>
+
+
+<view class = "product">
+
+<view class = "product">
+
+<view class = "product-item">
+
+<view class = "product-name">@{{user.createName}}</view>
+
+
+<view class = "product-desc">
+ {{user.topic_content}}
+</view>
+
+</view>
+
+</view>
+
+</view>
+
+
+
+<image class = "product-image-item" mode = 'widthFix' src='{{user.topic_img}}'>
+
+</image>
+
+ <view class = "product-line"> </view>
+
+<view >
+
+ <text class='comment'>最新评论</text>
+
+</view>
+
+
+
+ <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="comment">
+
+
+<view class = "product">
+
+
+<image class = "product-image" mode="aspectFit" src='{{comment.createAvator}}'>
+
+</image>
+
+<view class = "product-item">
+
+<view class = "product-name">{{comment.createName}}</view>
+
+<view class = "product-info">
+
+</view>
+
+<view class = "product-desc">
+ {{comment.findcontent}}
+</view>
+
+<view class = "product-time">{{comment.friendTime}}</view>
+
+</view>
+
+</view>
+
+<view>
+
+
+</view>
+
+ <view class = "product-line"> </view>
+
+
+</view>
+
+
+</view>
+
+
+<view class="release">
+    <textarea class="text"
+          placeholder-class="input_null" 
+          fixed="true" 
+          bindblur="bindTextAreaBlur"
+          maxlength="-1" 
+          show-confirm-bar="false" 
+          cursor-spacing="15" 
+          auto-height="true" 
+          focus="{{releaseFocus}}"
+          placeholder="回复 {{releaseName}}"></textarea>
+    <view class="submit" bindtap='onComment'>发送</view>
+</view>
+
+
+ <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+ 
+
+    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
+
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    
+  </dialog>
+

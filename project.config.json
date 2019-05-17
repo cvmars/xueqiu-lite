@@ -1,5 +1,6 @@
 {
 	"description": "项目配置文件",
+  "cloudfunctionRoot":"function/",
 	"packOptions": {
 		"ignore": []
 	},
@@ -12,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
-	"appid": "wxdcbd25406b60939d",
+	"appid": "wx1743dc274cf46871",
 	"projectname": "wechat-xueqiu",
 	"debugOptions": {
 		"hidedInDevtools": []

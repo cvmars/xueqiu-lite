@@ -1,0 +1,72 @@
+<view class = 'parent'>
+
+
+
+<view class = "product">
+
+
+<image class = "product-image" mode="aspectFill" src='{{carinfo.topic_url}}'>
+
+</image>
+
+
+<view class = "product-item">
+
+<view class = "product-name">#{{carinfo.topic_name}}#</view>
+
+<view class = "product-info">
+
+</view>
+
+<view class = "product-desc">
+ {{carinfo.topic_desc}}
+</view>
+
+
+</view>
+
+
+
+</view>
+
+ <view class = "product-line"> </view>
+
+
+
+ <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="user"  data-index="{{index}}" >
+
+
+<view class = "product">
+
+<view class = "product-item">
+
+<view class = "product-name">@{{user.createName}}</view>
+
+<view class = "product-info">
+
+</view>
+
+<view class = "product-desc">
+ {{user.topic_content}}
+</view>
+
+
+<view class = "product-time">
+ {{user.friendTime}}
+</view>
+
+
+</view>
+
+</view>
+
+<image class = "product-image-item" mode = 'widthFix' src='{{user.topic_img}}'>
+
+</image>
+
+ <view class = "product-line"> </view>
+</view>
+
+</view>
+
+<image bindtap = "onPublish" class = "phblish"src='../../image/ic_publish.png'></image>

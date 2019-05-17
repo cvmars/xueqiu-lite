@@ -1,0 +1,205 @@
+<!--logs.wxml-->
+
+<!-- <view class='home-sroll'>
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
+      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper> 
+ <view class = "swiper-bottom">
+    </view>
+
+</view> -->
+
+
+<view class = "car-view-notice">
+  
+  <image src="../../image/icon_notice.png" class="car-notice" mode="aspectFill"/> 
+  <text class = "car-text-notice">本平台不提供任何形式担保</text>
+</view>
+
+<!-- 
+<button open-type="contact" session-from='{"kefu":["kefu_id1"] }'>
+客服
+</button> -->
+
+<view class='line2'></view>
+
+
+<view class = "item-shop">
+
+  <!-- <block> -->
+
+  <view class = "shop-item-lianhua" bindtap='onProductList'>
+  
+  <image src='../../image/ic_car1.png' class = "image-shop"></image>
+  <text class = "item-shop-text">全部</text>
+  </view>
+
+  <!-- </block> -->
+
+
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/ic_car2.png' class = "image-shop"></image>
+  <text class = "item-shop-text">车找人</text>
+  </view>
+
+
+
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/ic_car3.png' class = "image-shop"></image>
+  <text class = "item-shop-text">人找车</text>
+  </view>
+
+
+
+  <view class = "shop-item-lianhua">
+  
+  <image src='../../image/ic_car4.png' class = "image-shop"></image>
+  <text class = "item-shop-text">车找货</text>
+  </view>
+
+    <view class = "shop-item-lianhua">
+  
+  <image src='../../image/ic_car5.png' class = "image-shop"></image>
+  <text class = "item-shop-text">货找车</text>
+  </view>
+
+</view>
+
+<view class='line10'></view>
+
+
+
+
+
+<!-- 帅选 -->
+ <view class = "view-search">
+ 
+ <view class = "car-view-search"> 
+ 
+ <input placeholder='出发地搜索' class = 'search-input'></input>
+  <image src="../../image/icon_car_c.png" class="car-search" mode="aspectFill"/>
+
+  <input placeholder='目的地搜索' class ='search-input'></input>
+ 
+  <image src="../../image/icon_car_s.png" class="car-search-1" mode="aspectFill"/> 
+ </view>
+
+</view>
+<!-- 帅选 -->
+
+<view class='line3'></view>
+
+
+
+<view class = "car-view-info">
+  <text class = 'car-sort-title'>拼车信息</text>
+  <!-- <image src="../../image/icon_notice.png" class="car-notice" mode="aspectFill"/>  -->
+  <text class = 'car-sort'>按出发时间排序</text>
+</view>
+
+
+
+<view class='line2'></view>
+
+
+
+<view class="container log-list">
+
+  <view class="list-item" wx:for="{{results}}" wx:for-item="user" >
+
+
+
+
+  <view data-index="{{index}}" class = "car-center" bindtap='onCarDetail'>
+
+
+  <view class = "car-left">
+
+
+
+ <view  class = "car-userinfo">
+    
+ <image class = "product-image" mode="aspectFit" src='{{user.createAvator}}'>
+
+</image>
+
+<view class = "product-name">{{user.createName}}</view>
+
+<view class = "product-time">{{user.friendTime}}</view>
+  </view>
+
+
+  <view >
+
+  <text class="car-title">从</text>
+  <text class="car-content">{{user.car_out_address1}} {{user.car_out_address2}}</text>
+  </view>
+
+   <view class = "car-info">
+
+  <text class = "car-title">到</text>
+  <text class = "car-content">{{user.car_order_address1}} {{user.car_order_address2}}</text>
+  </view>
+
+
+   <view class = "car-info">
+
+  <text class = "car-title">时间</text>
+  <text class = "car-content">{{user.car_time}}</text>
+  </view>
+
+   <view class = "car-info">
+
+  <text class = "car-title">剩余</text>
+  <text class = "car-content">{{user.car_number}}座</text>
+  </view>
+
+   </view>
+
+<!-- <view class = "car-right">
+  已出行
+  </view> -->
+
+   </view>
+
+
+<view class='line'></view>
+
+
+  </view>
+
+
+
+
+
+
+
+
+
+  <official-account></official-account>
+
+  <image bindtap = "onPublish" class = "phblish"src='../../image/ic_publish.png'></image>
+
+
+   <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+ 
+
+    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
+
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    
+  </dialog>
+
+
+
+</view>
+
+
+
+ 

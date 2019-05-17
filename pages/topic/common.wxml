@@ -1,0 +1,30 @@
+<view class = 'parent'>
+
+ <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="topic" data-index="{{index}}">
+
+
+<view class = "product">
+
+<image class = "product-image" src='{{topic.topic_url}}' mode="aspectFill">
+
+</image>
+
+<view class = "product-item">
+
+<view class = "product-name">#{{topic.topic_name}}#</view>
+
+<view class = "product-info">
+
+</view>
+
+<view class = "product-desc">
+ {{topic.topic_desc}}
+</view>
+
+</view>
+
+</view>
+ <view class = "product-line"> </view>
+</view>
+
+</view>

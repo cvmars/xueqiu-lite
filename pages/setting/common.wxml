@@ -1,0 +1,84 @@
+<view class='parent'>
+
+
+ <image class = "main-avator" src="{{userInfo.avatarUrl}}" mode="aspectFit"></image>
+
+<text class='main-text'>{{userInfo.nickName}}</text>
+
+</view>
+
+<view class='main-bottom'>
+
+
+<view class = 'item-setting' bindtap='onCar'>
+
+<image class = 'item-icon' src='../../image/car.png'></image>
+ <button class = 'item-title'>我的发布</button>
+</view>
+
+ <view class = 'item-line'></view>
+
+
+ <view class = 'item-setting1' bindtap='onShare'>
+
+<image class = 'item-icon' src='../../image/car.png'></image>
+ <button class = 'item-title'  open-type='share' >分享程序</button>
+</view>
+
+ <view class = 'item-line'></view>
+</view>
+
+
+
+
+<!-- <view id="panel" class="flex-column">
+  <view class="flex-cell flex-row">
+    <view class="flex-cell flex-row">
+    
+    <view class ='item' bindtap='onInfo'>
+    <image  class = 'item-avator'src='../../image/icon_ziliao.png'>
+     </image>
+     <text class = "item-name">个人资料</text>
+    </view>
+    
+    </view>
+
+      <view class="flex-cell flex-row">
+    
+    <view class ='item' bindtap='zeou'>
+    <image  class = 'item-avator'src='../../image/icon_zeou.png'>
+     </image>
+     <text class='item-name'>择偶标准</text>
+    </view>
+    
+    </view>
+
+      <view class="flex-cell flex-row">
+    
+    <view class ='item' bindtap='renzhen'>
+    <image  class = 'item-avator'src='../../image/icon_renzhen.png'>
+     </image>
+     <text class='item-name'>身份认证</text>
+    </view>
+    
+    </view>
+
+    <view class="flex-cell flex-row">
+  
+    <view class ='item' bindtap='onWhoSeeMe'>
+    <image  class = 'item-avator'src='../../image/icon_see.png'>
+     </image>
+     <text class='item-name'>谁看过我</text>
+      <text class = "item-set-number" hidden='{{numberSee}}'>+{{numSee}}</text>
+
+    </view> -->
+    
+    <!-- </view> -->
+   
+  <!-- </view> -->
+  
+
+
+  <!-- </view> -->
+
+

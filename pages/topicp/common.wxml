@@ -1,0 +1,23 @@
+<view class = 'parent'>
+
+ <textarea bindblur="bindTextAreaBlur" value="{{ceshi}}" class = 'text-topic' placeholder='遇见风景遇见你'></textarea>
+
+
+ <view class = 'topic-pic' bindtap='doUpload'>添加照片</view>
+
+
+<image class = 'topic-image' src='{{headload}}' mode='aspectFill'></image>
+
+ <view class = "car_publish" bindtap='publish'>发布</view>
+
+
+  <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
+ 
+
+    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
+
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    
+  </dialog>
+  
+</view>

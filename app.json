@@ -1,18 +1,20 @@
 {
   "pages": [
-   
-    "pages/index/index",
     "pages/product/common",
+    "pages/car/logs",
+    "pages/carm/logs",
+    "pages/carinfo/common",
+    "pages/setting/common",
+    "pages/comment/common",
+    "pages/carp/common",
+    "pages/pppdetail/common",
     "pages/pdetail/common",
-    "pages/logs/logs",
-    "pages/pseron/common",
-    "pages/see/common",
-    "pages/info/common",
-    "pages/main/common",
+    "pages/plist/common",
     "pages/common/common",
     "pages/login/common",
-    "pages/about/about",
-    "pages/piaoliu/logs"
+     "pages/topic/common",
+      "pages/topicd/common",
+      "pages/topicp/common"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,31 +23,34 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#666666",
+ "selectedColor": "#333333", 
     "position": "bottom",
     "list": [
+{
+  "pagePath": "pages/product/common",
+  "text": "莲花店铺",
+  "iconPath": "image/tab3.png",
+  "selectedIconPath": "image/tab4.png"
+},
+{
+  "pagePath": "pages/car/logs",
+  "text": "信息发布",
+  "iconPath": "image/tab1.png",
+  "selectedIconPath": "image/tab2.png"
+},
+
       {
-        "pagePath": "pages/index/index",
-        "text": "活动",
-        "iconPath": "image/main_tab_item_icon1.png",
-        "selectedIconPath": "image/main_tab_item_icon1_selected.png"
+        "pagePath": "pages/topic/common",
+        "text": "莲花论坛",
+        "iconPath": "image/tab5.png",
+        "selectedIconPath": "image/tab6.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "最近在线",
-        "iconPath": "image/main_tab_item_icon2.png",
-        "selectedIconPath": "image/main_tab_item_icon2_selected.png"
-      },
-      {
-        "pagePath": "pages/product/common",
-        "text": "莲花店铺",
-        "iconPath": "image/main_tab_item_icon2.png",
-        "selectedIconPath": "image/main_tab_item_icon2_selected.png"
-      },
-      {
-        "pagePath": "pages/main/common",
+        "pagePath": "pages/setting/common",
         "text": "我的",
-        "iconPath": "image/main_tab_item_icon4.png",
-        "selectedIconPath": "image/main_tab_item_icon4_selected.png"
+        "iconPath": "image/tab7.png",
+        "selectedIconPath": "image/tab8.png"
       }
     ]
   }

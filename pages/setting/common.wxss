@@ -1,0 +1,158 @@
+/* pages/common/common.wxss */
+
+.item-title{
+
+  margin-left: 10rpx;
+  width: 100pt;
+  background: #fff;
+}
+
+button::after {
+  border: none
+}
+
+
+.item-setting{
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.item-setting1{
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  margin-top: 30rpx;
+}
+
+.item-icon{
+
+  width: 40rpx;
+  height: 40rpx;
+}
+.item-line{
+
+  width: 100%;
+  height: 0.5pt;
+  background: #eee;
+}
+
+.item-name{
+
+
+font-size: 30rpx;
+
+color: #333;
+margin:auto;
+}
+
+.item-set-number{
+
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  color: red;
+  font-size: 25rpx;
+}
+
+
+.item-avator{
+
+  width: 50pt;
+  height: 50pt;
+
+}
+
+.item{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  border: 1rpx solid #ddd;
+  padding: 10rpx;
+  position: relative;
+}
+
+
+#panel{
+  width: 100%;
+  background:#fff;
+}
+
+#panel text{
+
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  
+}
+
+.main-bottom{
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 100rpx;
+
+}
+
+.flex-cell{
+  flex: 1;
+}
+
+
+.parent{
+
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.main-avator{
+
+  width: 60pt;
+  height: 60pt;
+  margin-left: 25dp;
+  border-radius: 50%;
+  margin-top: 40rpx;
+}
+
+.main-text{
+
+  padding-left: 15dp;
+  margin-top: 10pt;
+}
+
+.main-display{
+
+  display: flex;
+  margin-top: 20dp;
+  margin-left: 15dp;
+  margin-right: 15dp;
+  align-items: center;
+  position: relative;
+}
+
+.main-update{
+
+  padding-left: 6pt;
+  padding-top: 2pt;
+  margin-top: 20pt;
+  padding-bottom: 2pt;
+  padding-right: 6pt;
+  width: 120pt;
+  text-align: center;
+  border:1pt solid #F57C00;
+  border-radius :20pt;
+  size: 11pt;
+}
