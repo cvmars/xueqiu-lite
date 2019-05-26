@@ -14,6 +14,7 @@
   border-radius: 50% 50% 0 0;
 }
 
+
 .item-shop{
   margin-top: 32rpx;
   margin-left: 40rpx;
@@ -40,8 +41,8 @@ background: #eee;
 
 .item-shop-text{
 
-  font-size: 30rpx;
-  margin-top: 3rpx;
+  font-size: 28rpx;
+  margin-top: 5rpx;
 }
 
 .item-product-text{
@@ -193,6 +194,14 @@ font-weight: bold;
   font-size: 32rpx;
 }
 
+.car-sort-title2{
+
+  margin-left: 10rpx;
+  color: #666;
+  font-weight:normal;
+  font-size: 26rpx;
+}
+
 
 .line2{
 
@@ -222,9 +231,13 @@ font-weight: bold;
 }
 
 .car-sort{
-
+  border:1px solid #ff6600;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   position: absolute;
   right: 20rpx;
+  border-radius:10rpx;
+  font-size: 24rpx;
 }
 
 .car-center{

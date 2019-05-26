@@ -1,3 +1,9 @@
+const app = getApp()
+const util = require('../../utils/api.js')
+const timeUtils = require('../../utils/util.js')
+const API_MY_CAR = '/customer/my/service-car/' //我的拼车
+
+
 Page({
 
   /**
@@ -9,6 +15,8 @@ Page({
     carid:'',
     hiddenHome:true,
     userInfo:{},
+    carType: ['车找人', '人找车'],
+    carRang: ['国内拼车', '市内拼车', '县内拼车'],
     showLogin:''
   },
   getUserInfo: function (e) {
@@ -24,12 +32,30 @@ Page({
     wx.setStorageSync('useinfo', e.detail.userInfo)
 
   },
+
+  getCarInfo: function (option){
+
+    let that = this;
+    let data = {}
+    util.Requests(util.getBaseUrl() + API_MY_CAR + option, data).then((res) => {
+
+     that.setData({
+
+       carinfo : res.data
+
+     })
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var objectId = options.carid
     console.log('carid :' + objectId)
+
+    this.getCarInfo(objectId);
+
 
 var share = options.share;
 
@@ -40,56 +66,54 @@ if(share == 1){
     hiddenHome : false
   })
 }
-    const db = wx.cloud.database()
+    // const db = wx.cloud.database()
 
 
-    var that = this
+    // var that = this
 
-    var user = wx.getStorageSync('useinfo')
+    // var user = wx.getStorageSync('useinfo')
 
-    console.log('info :' + JSON.stringify(user))
+    // console.log('info :' + JSON.stringify(user))
 
-    that.setData({
+    // that.setData({
 
-      userInfo: user,
+    //   userInfo: user,
   
-    })
+    // })
 
-    if (this.data.userInfo == "") {
+    // if (this.data.userInfo == "") {
 
-      that.setData({
+    //   that.setData({
 
-        showLogin: true
-      })
-    }
+    //     showLogin: true
+    //   })
+    // }
 
+    // that.setData({
+    //   carid: objectId
+    // })
 
+    // db.collection('car').where({
+    //   _id: objectId
+    // }).get({
 
-    that.setData({
-      carid: objectId
-    })
+    //   success: function (res) {
+    //     console.log('success')
+    //     that.setData({
 
-    db.collection('car').where({
-      _id: objectId
-    }).get({
+    //       carinfo: res.data[0]
+    //     })
+    //     console.log('info :' + JSON.stringify(that.data.carinfo))
+    //   },
 
-      success: function (res) {
-        console.log('success')
-        that.setData({
+    //   error :function(e){
 
-          carinfo: res.data[0]
-        })
-        console.log('info :' + JSON.stringify(that.data.carinfo))
-      },
-
-      error :function(e){
-
-        console.log('error')
-      }
+    //     console.log('error')
+    //   }
 
       
        
-      })
+    //   })
    
   },
 

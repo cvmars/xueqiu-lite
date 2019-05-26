@@ -1,7 +1,7 @@
 
 function  getBaseUrl(){
 
-  return 'https://test.lhxq.top';
+  return 'https://lianhua.lhxq.top';
 }
 
 function Requests(url, data) {
@@ -39,6 +39,41 @@ function Requests(url, data) {
   })
 }
 
+
+function Requests_Delete(url, data) {
+
+  var header = getHeader();
+
+  return new Promise((resolv, reject) => {
+    wx.request({
+      url: url,
+      data: data,
+      method: "DELETE",
+      header: header,
+      success: function (res) {
+        if (res.data == "服务器异常") {
+          wx.hideLoading()
+          wx.showModal({
+            title: '提示',
+            content: '网络错误或服务器繁忙!',
+          })
+        } else {
+          console.log(res.data)
+          resolv(res.data)
+        }
+      },
+      fail: function (err) {
+        console.log(err)
+        reject(err)
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '网络错误或服务器繁忙!',
+        })
+      }
+    })
+  })
+}
 
 
 function getHeader() {
@@ -148,5 +183,6 @@ function getSessionId2(cookie) {
 module.exports = {
   Requests,
   Requests_json,
+  Requests_Delete,
   getBaseUrl
 }

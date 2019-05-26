@@ -1,3 +1,17 @@
+
+const app = getApp()
+const util = require('../../utils/api.js')
+const timeUtils = require('../../utils/util.js')
+const API_SHOP = '/customer/store/' //店铺列表
+const API_PRODUCT = '/customer/product/' //产品列表
+const API_HOME_BANNER = '/customer/ad/homepage/' //banner数据
+
+
+const API_POST_PIAOLIU = '/api/bottles-mine/' //抛出漂流瓶
+const API_GET_PIAOLIU = '/api/bottles/pickone/' // 捡漂流瓶
+const API_GET_EXITAPP = '/customer/logout/' //退出登录
+
+
 Page({
 
   /**
@@ -6,6 +20,9 @@ Page({
   data: {
     
     results:[],
+    shopData:[],
+    productData: [],
+    bannerData:[],
     imgUrls: [
       'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
       'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
@@ -50,8 +67,68 @@ wx.navigateTo({
         console.log("res :" + JSON.stringify(res.data))
       }
     })
+
+    this.getShop();
+    this.getProduct(); 
+    this.getBanner();
   },
 
+
+//获取店铺列表
+  getShop:function(){
+
+let that = this;
+let data = {}
+    util.Requests(util.getBaseUrl() + API_SHOP, data).then((res) => {
+     
+
+      that.setData({
+
+        shopData : res.data.results
+      })
+    console.log("data"+ that.data.shopData)
+    })
+  },
+
+
+  //获取店铺列表
+  getProduct: function () {
+
+    let that = this;
+    let data = {}
+    util.Requests(util.getBaseUrl() + API_PRODUCT, data).then((res) => {
+
+
+      //  let products = [];
+
+      for (var i = 0; i < res.data.results.length; i++) {
+
+        var tempTopic = res.data.results[i];
+
+        tempTopic.img = tempTopic.images[0];
+      }
+      that.setData({
+
+        productData: res.data.results
+      })
+      console.log("data" + that.data.productData)
+    })
+  },
+
+  //获取店铺列表
+  getBanner: function () {
+
+    let that = this;
+    let data = {}
+    util.Requests(util.getBaseUrl() + API_HOME_BANNER, data).then((res) => {
+
+      that.setData({
+
+        bannerData: res.data.results
+      })
+      console.log("data" + that.data.bannerData)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -98,6 +175,51 @@ wx.navigateTo({
     
   },
 
+//商品详情
+  onProductDetail:function(e){
+
+
+    var index = parseInt(e.currentTarget.dataset.index);
+
+
+    // 取出id值
+    var objectId = this.data.productData[index].id;
+
+
+
+ wx.navigateTo({
+  
+   url: "../pppdetail/common?id=" + objectId
+
+ })
+
+
+  },
+
+  onShop:function(e){
+
+    var that = this;
+    // // 取得下标
+    var index = parseInt(e.currentTarget.dataset.index);
+
+    console.log("index:" + index)
+    // 取出id值
+    var objectId = that.data.shopData[index].id;
+
+    console.log('id :' + objectId + ",index:" + index)
+
+
+    wx.navigateTo({
+      url: '../pdetail/common?id=' + objectId,
+    })
+  },
+
+  onCar: function () {
+
+    wx.navigateTo({
+      url: '../car/logs',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -128,13 +250,13 @@ wx.navigateTo({
 
     console.log("index:" + index)
     // 取出id值
-    var objectId = that.data.results[index].shop_id;
+    var objectId = that.data.shopData[index].id;
 
     console.log('id :' + objectId + ",index:" + index)
 
 
 wx.navigateTo({
-  url: '../pdetail/common?shopid=' + objectId,
+  url: '../pdetail/common?id=' + objectId,
 })
   },
 

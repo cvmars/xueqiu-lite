@@ -32,16 +32,18 @@
 
   <!-- <block> -->
 
-  <view class = "shop-item-lianhua" bindtap='onProductList'>
+  <view  bindtap='onAll' class = "shop-item-lianhua" >
   
-  <image src='../../image/ic_car1.png' class = "image-shop"></image>
+  <image src='../../image/ic_car1.png' 
+ 
+  class = "image-shop"></image>
   <text class = "item-shop-text">全部</text>
   </view>
 
   <!-- </block> -->
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua"  bindtap='onCarP'>
   
   <image src='../../image/ic_car2.png' class = "image-shop"></image>
   <text class = "item-shop-text">车找人</text>
@@ -49,7 +51,7 @@
 
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua"  bindtap='onPCar'>
   
   <image src='../../image/ic_car3.png' class = "image-shop"></image>
   <text class = "item-shop-text">人找车</text>
@@ -57,16 +59,16 @@
 
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua"  bindtap='onCarShi'>
   
   <image src='../../image/ic_car4.png' class = "image-shop"></image>
-  <text class = "item-shop-text">车找货</text>
+  <text class = "item-shop-text">市拼车</text>
   </view>
 
-    <view class = "shop-item-lianhua">
+    <view class = "shop-item-lianhua"  bindtap='onCarXian'>
   
   <image src='../../image/ic_car5.png' class = "image-shop"></image>
-  <text class = "item-shop-text">货找车</text>
+  <text class = "item-shop-text">县拼车</text>
   </view>
 
 </view>
@@ -82,12 +84,12 @@
  
  <view class = "car-view-search"> 
  
- <input placeholder='出发地搜索' class = 'search-input'></input>
+ <input placeholder='出发地搜索'   bindinput="onInputFrom" class = 'search-input'></input>
   <image src="../../image/icon_car_c.png" class="car-search" mode="aspectFill"/>
 
-  <input placeholder='目的地搜索' class ='search-input'></input>
+  <input placeholder='目的地搜索'bindinput="onInputTo"  class ='search-input'></input>
  
-  <image src="../../image/icon_car_s.png" class="car-search-1" mode="aspectFill"/> 
+  <image bindtap = 'onSearch'src="../../image/icon_car_s.png" class="car-search-1" mode="aspectFill"/> 
  </view>
 
 </view>
@@ -99,6 +101,8 @@
 
 <view class = "car-view-info">
   <text class = 'car-sort-title'>拼车信息</text>
+  <text class = 'car-sort-title2'>({{car_type_str}})</text>
+
   <!-- <image src="../../image/icon_notice.png" class="car-notice" mode="aspectFill"/>  -->
   <text class = 'car-sort'>按出发时间排序</text>
 </view>
@@ -111,7 +115,7 @@
 
 <view class="container log-list">
 
-  <view class="list-item" wx:for="{{results}}" wx:for-item="user" >
+  <view class="list-item" wx:for="{{carData}}" wx:for-item="user" >
 
 
 
@@ -138,26 +142,26 @@
   <view >
 
   <text class="car-title">从</text>
-  <text class="car-content">{{user.car_out_address1}} {{user.car_out_address2}}</text>
+  <text class="car-content">{{user.area_from_text}} </text>
   </view>
 
    <view class = "car-info">
 
   <text class = "car-title">到</text>
-  <text class = "car-content">{{user.car_order_address1}} {{user.car_order_address2}}</text>
+  <text class = "car-content">{{user.area_to_text}} {{user.car_order_address2}}</text>
   </view>
 
 
    <view class = "car-info">
 
   <text class = "car-title">时间</text>
-  <text class = "car-content">{{user.car_time}}</text>
+  <text class = "car-content">{{user.start_at}}</text>
   </view>
 
    <view class = "car-info">
 
   <text class = "car-title">剩余</text>
-  <text class = "car-content">{{user.car_number}}座</text>
+  <text class = "car-content">{{user.site_count}}座</text>
   </view>
 
    </view>
@@ -188,11 +192,19 @@
 
 
    <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
- 
 
-    <text>尚未进行授权，请点击确定跳转到授权页面进行授权。</text>
 
-  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+  <view>
+  <view clas = "view-login"></view>
+
+    <text class = "txt-login"> \n请授权登陆微信小程序\n
+    </text>
+
+   <view clas = "view-login"></view>
+  </view>
+    
+    
+  <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登 录</button>
     
   </dialog>
 

@@ -1,3 +1,11 @@
+//logs.js
+
+const app = getApp()
+const util = require('../../utils/api.js')
+const timeUtils = require('../../utils/util.js')
+const API_CAR_LIST = '/customer/my/service-car/' //
+
+
 Page({
 
   /**
@@ -5,10 +13,17 @@ Page({
    */
   data: {
     region: ['江西省', '萍乡市', '莲花县'],
+    carType: ['车找人', '人找车'],
+    carRang:['国内拼车','市内拼车','县内拼车'],
     out_address1:'',
     out_address2: '',
     order_address1: '',
     order_address2: '',
+    car_type:'',
+    car_type_str:'',
+    car_rang: '',
+    car_rang_str: '',
+    car_item_address:'',
     car_time:'',
     car_number:'',
     car_name:'',
@@ -31,20 +46,37 @@ Page({
     })
   },
 
-  publish: function (e) {
+  //获取店铺列表
+  onPublish: function () {
 
-  let that = this;
+    let that = this;
     console.log("out_address2 :" + this.data.out_address2)
-    if (this.data.out_address1 == ''){
+
+    if (this.data.car_type_str == '') {
       wx.showToast({
-        title: '请选择出发城市'
+        title: '请选择拼车类型'
       });
       return;
     }
 
-    if (this.data.order_address1 == '') {
+    if (this.data.car_rang_str == '') {
       wx.showToast({
-        title: '请选择目的地城市'
+        title: '请选择拼车范围'
+      });
+      return;
+    }
+
+
+    if (this.data.out_address2 == '') {
+      wx.showToast({
+        title: '请输入出发城市'
+      });
+      return;
+    }
+
+    if (this.data.order_address2 == '') {
+      wx.showToast({
+        title: '请输入目的地城市'
       });
       return;
     }
@@ -69,58 +101,69 @@ Page({
       });
       return;
     }
-    
-    const db = wx.cloud.database()
 
-    var timestamp = Date.parse(new Date());
-    db.collection('car').add({
-      data: {
-        car_out_address1: that.data.out_address1,
-        car_out_address2: that.data.out_address2,
-        car_order_address1: that.data.order_address1,
-        car_order_address2: that.data.order_address2,
-        car_time: that.data.car_time,
-        car_number: that.data.car_number,
-        car_name: that.data.car_name,
-        car_phone: that.data.car_phone,
-        car_about: that.data.car_about,
-        createTime: timestamp,
-        createName: that.data.userInfo.nickName,
-        createAvator: that.data.userInfo.avatarUrl
-      },
-      success: res => {
-        // 在返回结果中会包含新创建的记录的 _id
-        this.setData({
-          counterId: res._id,
-          count: 1
-        })
-       
-        wx.showToast({
-          title: '提交成功',
-        });
-        var pages = getCurrentPages(); // 当前页面
-        var beforePage = pages[pages.length - 2]; // 前一个页面
-        if (pages.length > 1) {
-          //上一个页面实例对象
-          var prePage = pages[pages.length - 2];
-          //关键在这里
-          prePage.onLoad()
-        }
-        wx.navigateBack({
-          
-        });
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '新增记录失败'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
+
+    let data = {
+
+      car_service_type: parseInt(that.data.car_type) + 1,
+      area_from_text: that.data.out_address2,
+      area_to_text: that.data.order_address2,
+      place_pass:that.data.car_item_address,
+      start_at: that.data.car_time,
+      tel: that.data.car_phone,
+      site_count: that.data.car_number,
+      mark: that.data.car_about,
+      published: true,
+
+      // car_out_address1: that.data.out_address1,
+      // car_out_address2: that.data.out_address2,
+      // car_order_address1: that.data.order_address1,
+      // car_order_address2: that.data.order_address2,
+      // car_time: that.data.car_time,
+      // car_number: that.data.car_number,
+      // car_name: that.data.car_name,
+      // car_phone: that.data.car_phone,
+      // car_about: that.data.car_about,
+      // createTime: timestamp,
+      // createName: that.data.userInfo.nickName,
+      // createAvator: that.data.userInfo.avatarUrl
       }
-    })
+      
+    util.Requests_json(util.getBaseUrl() + API_CAR_LIST, data).then((res) => {
 
+      wx.showToast({
+        title: '提交成功',
+      });
+      var pages = getCurrentPages(); // 当前页面
+      var beforePage = pages[pages.length - 2]; // 前一个页面
+      if (pages.length > 1) {
+        //上一个页面实例对象
+        var prePage = pages[pages.length - 2];
+        //关键在这里
+        prePage.onLoad()
+      }
+      wx.navigateBack({
+
+      });
+    
+    })
   },
+
+
+  bindTypeChange:function(e){
+    this.setData({
+      car_type: e.detail.value,
+      car_type_str: this.data.carType[e.detail.value]
+    })
+  },
+
+  bindRangChange: function (e) {
+    this.setData({
+      car_rang: e.detail.value,
+      car_rang_str: this.data.carRang[e.detail.value]
+    })
+  },
+
 
   bindDateChange:function(e){
 
@@ -146,6 +189,7 @@ Page({
       car_about: val
     });
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -203,6 +247,15 @@ Page({
   },
 
   
+  getItemAddress: function (e) {
+    var val = e.detail.value;
+    this.setData({
+       car_item_address: val
+    });
+  },
+
+
+
 
   getOutAddress2: function (e) {
     var val = e.detail.value;

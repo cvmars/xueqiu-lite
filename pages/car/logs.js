@@ -3,12 +3,9 @@
 const app = getApp()
 const util = require('../../utils/api.js')
 const timeUtils = require('../../utils/util.js')
-const API_LAST_PERSON = '/customer/active/lists/' //最近在线的人接口
-const API_LOGIN = '/api/customers/login_miniprogram/' //登录接口
-const API_USER_UPDATE = '/customer/profile/' //修改用户信息
-const API_POST_PIAOLIU = '/api/bottles-mine/' //抛出漂流瓶
-const API_GET_PIAOLIU = '/api/bottles/pickone/' // 捡漂流瓶
-const API_GET_EXITAPP = '/customer/logout/' //退出登录
+const API_CAR_LIST = '/customer/service-car/' //
+const API_LOGIN = '/customer/u/login_miniprogram/' //
+const API_USER_UPDATE = '/customer/u/profile/' //
 
 
 Page({
@@ -18,53 +15,196 @@ Page({
     userInfo: {},
     openid:'',
     showLogin:false,
-
+    carType: ['车找人', '人找车'],
+    carRang: ['国内拼车', '市内拼车', '县内拼车'],
+    curPage : 1,
+    car_type_str:'全部',
     totalCount: 100,
     pageSize: 4,
     mCurPage: 1,
-    imgUrls: [
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png'
-    ],
-    shareInfo:{}
+    searchKeyfrom:'',
+    searchKeyto: '',
+    shareInfo:{},
+    car_service_type:'',
+
+    carData:[]
+
+  },
+ 
+  onAll:function(e){
+
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+      car_service_type: '',
+      car_type_str:'全部'
+    })
+    data['page'] = this.data.mCurPage
+    this.getCarList(data)
+  },
+
+  onCarP: function (e) {
+
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+      car_service_type: 1,
+      car_type_str: '车找人'
+    })
+    data['page'] = this.data.mCurPage
+    this.getCarList(data)
+  },
+
+  onPCar: function (e) {
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+      car_service_type: 2,
+       car_type_str: '人找车'
+    })
+    data['page'] = this.data.mCurPage
+
+    this.getCarList(data)
+  },
+
+
+  onCarShi: function (e) {
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+      car_service_type: 0,
+      car_type_str: '市内拼车'
+    })
+    data['page'] = this.data.mCurPage
+  },
+
+
+  onCarXian: function (e) {
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+      car_service_type: 0,
+      car_type_str: '县内拼车'
+    })
+    data['page'] = this.data.mCurPage
+  },
+
+
+
+
+  onInputFrom: function (e) {
+    var val = e.detail.value;
+    this.setData({
+      searchKeyfrom: val
+    });
+  },
+
+  onInputTo: function (e) {
+    var val = e.detail.value;
+    this.setData({
+      searchKeyto: val
+    });
+  },
+
+  onUpdataInfo:function(option){
+
+   let that = this;
+    util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, option).then((res) => {
+
+    })
 
   },
   getUserInfo: function (e) {
     console.log("helo" + e)
     app.globalData.userInfo = e.detail.userInfo
-
+    let that = this
     console.log("userinfo : " + JSON.stringify( e.detail.userInfo))
     this.setData({
       userInfo: e.detail.userInfo
     })
+    
+
     wx.setStorageSync('useinfo'  , e.detail.userInfo)
     this.setData({
 
       showLogin: false
     })
-  }, // 获取用户openid
-  getOpenid() {
-    let that = this;
-    wx.cloud.callFunction({
-      name: 'getOpenid',
-      complete: res => {
-        console.log('云函数获取到的openid: ', res.result)
-        var openid = res.result.openId;
-        that.setData({
-          openid: openid
+
+    wx.login({
+      //获取code
+      success: function (res) {
+        var code = res.code //返回code
+        console.log("code :" + code);
+        let data = {
+          code: code
+        }
+        util.Requests_json(util.getBaseUrl() + API_LOGIN, data).then((res) => {
+
+       
+          that.onLoad()
+        
         })
-        console.log('openid :' + openid )
-        wx.setStorageSync('openid', openid);
       }
+      })
+  }, 
+  
+
+  //获取店铺列表
+  getCarList: function (option) {
+
+    let that = this;
+    let data = option
+    data['area_from_text__contains'] = this.data.searchKeyfrom
+    data['area_to_text__contains'] = this.data.searchKeyto
+    data['car_service_type'] = this.data.car_service_type
+  
+    console.log("page :" + option['page'])
+    util.Requests(util.getBaseUrl() + API_CAR_LIST, data).then((res) => {
+
+
+      if (that.data.mCurPage == 1){
+
+       that.setData({
+
+         carData : []
+       })
+      }
+
+     let resTemp = this.data.carData
+
+        for (var i = 0; i < res.data.results.length; i++) {
+          var item = res.data.results[i];
+
+          resTemp.push(item)
+      }
+  
+      that.setData({
+
+        carData: resTemp
+      })
+      console.log("data" + that.data.carData)
     })
   },
+
 
   onLoad: function (options) {
 
 
+
+    let data = {};
+
+    this.setData({
+
+      mCurPage : 1
+    })
+    data['page'] = this.data.mCurPage
+
+    this.getCarList(data);
 
     var that = this
  
@@ -84,10 +224,17 @@ Page({
 
         showLogin: true
       })
-
       
     }else{
 
+
+
+      let data = {}
+      data['name'] = this.data.userInfo.nickName;
+      data['gender'] = this.data.userInfo.avatarUrl;
+      data['age'] = 18
+      data['avatar_url'] = this.data.userInfo.gender;
+      this.onUpdataInfo(data);
 
       if (options){
 
@@ -113,125 +260,25 @@ Page({
           })
         }
       }
-
-      
     }
-
-
 
     wx.cloud.init({
       env: 'lianhua-82fcb3',
        traceUser : true})
   
-    this.getOpenid()
-
-
-    const db = wx.cloud.database();
-
-
-    // 获取分享的信息
-    db.collection('share').get({
-      success: function (res) {
-        that.setData({
-
-          shareInfo: res.data[0]
-
-        })
-        console.log("shareInfo :" + res.data[0] +  that.data.shareInfo)
-      }
-    })
-
-
-    // 获取总数
-    db.collection('car').count({
-      success: function (res) {
-        that.setData({
-
-          totalCount: res.totalCount
-
-        })
-
-        console.log("count :" + that.data.totalCount)
-      }
-    })
-
-
-
-    db.collection('car').orderBy('createTime', 'desc').limit(that.data.pageSize).get({
-
-    success:function(res){
-
-
-      for (var i = 0; i < res.data.length; i++) {
-        var tempTopic = res.data[i];
-        var request_time = tempTopic.createTime;
-        var oldTime = request_time / 1000;
-        console.log('time :' + oldTime)
-        var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
-        tempTopic.friendTime = friendTime;
-      }
-
-      that.setData({
-
-       results: res.data
-     })
-
-      console.log("res :" + JSON.stringify(res.data))
- }
-    })
-     
+    this.getOpenid()     
   },
 
   onReachBottom:function(e){
 
-
-    var that = this;
-    var temp = [];
-    const db = wx.cloud.database()
-    db.collection('car').orderBy('createTime', 'desc').skip(this.data.pageSize * this.data.mCurPage).where({
-      topic_id: that.data.shopid
-    }).get({
-
-      success: function (res) {
-
-        var page = that.data.mCurPage + 1
-
-        that.setData({
-          mCurPage: page
-        })
-
-        for (var i = 0; i < res.data.length; i++) {
-          var tempTopic = res.data[i];
-
-          var request_time = tempTopic.createTime;
-          var oldTime = request_time / 1000;
-          console.log('time :' + oldTime)
-          var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
-          tempTopic.friendTime = friendTime;
-          temp.push(tempTopic);
-        }
-
-
-       
-
-
-        var totalTopic = {};
-        totalTopic = that.data.results.concat(temp);
-
-        that.setData({
-
-          results: totalTopic
-        })
-        console.log('info :' + JSON.stringify(that.data.results))
-      },
-
-      error: function (e) {
-
-        console.log('error')
-      }
-
+    let data = {};
+    var page = this.data.mCurPage + 1
+    this.setData({
+      mCurPage: page
     })
-
+    data['page'] = page
+   
+    this.getCarList(data)
   },
 
   //完善用户信息
@@ -245,7 +292,17 @@ Page({
 
   },
 
+  onSearch:function(){
 
+    let data = {};
+    this.setData({
+      mCurPage :1
+    })
+    data['page'] = this.data.mCurPage
+    
+    this.getCarList(data)
+
+  },
 
   onTop:function(e){
 
@@ -271,9 +328,9 @@ wx.navigateTo({
     // 取得下标
     var index = parseInt(e.currentTarget.dataset.index);
 
-  
+
     // 取出id值
-    var objectId = that.data.results[index]._id;
+    var objectId = that.data.carData[index].id;
 
     console.log('id :' + objectId + ",index:" + index)
 

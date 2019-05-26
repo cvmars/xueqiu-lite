@@ -1,55 +1,67 @@
 <view class = 'parent'>
 
-   <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}"  >
 
- <view class = "car-item">
+
+<picker range="{{carType}}" bindchange="bindTypeChange">
+
+  <view class = "car-item">
  
- <view class = "car-left">
- <text class = "car-title1">从</text>
+ <text class = "car-title2">拼车类型</text>
 
- </view>
-
-
- <view class = "car-input2" >{{out_address1}}</view>
+ <input class = "car-input2"  disabled = "true" placeholder='请选择拼车类型' value='{{car_type_str}}'></input>
 
 
  </view>
- </picker>
+
+</picker>
+
+
+
+<picker range="{{carRang}}" bindchange="bindRangChange">
+
+  <view class = "car-item">
+ 
+ <text class = "car-title2">拼车范围</text>
+
+ <input class = "car-input2"  disabled = "true" placeholder='请选择拼车范围' value='{{car_rang_str}}'></input>
+
+ </view>
+
+</picker>
+
+
+
 
   <view class = "car-item">
  
  <view class = "car-left">
-
+ <text class = "car-title1">从</text>
  </view>
  
- <input class = "car-input" placeholder="选填，上车地址"
+ <input class = "car-input" placeholder="请输入上车地址"
   value='{{out_address2}}' bindinput="getOutAddress2" ></input>
  </view>
 
 
-
-  <picker mode="region" bindchange="bindRegionChange2" value="{{region}}" custom-item="{{customItem}}" >
-
-<view class = "car-item">
+   <view class = "car-item">
  
  <view class = "car-left">
-
- <text class = "car-title3">到</text>
-
+ <text class = "car-title4">途经</text>
  </view>
  
- <view class = "car-input2" placeholder=''>{{order_address1}}</view>
-
+ <input class = "car-input" placeholder="选填，途经地址"
+  bindinput="getItemAddress" value='{{car_item_address}}'></input>
+  
  </view>
-</picker>
+
 
   <view class = "car-item">
  
  <view class = "car-left">
-
+ <text class = "car-title3">到</text>
  </view>
  
- <input class = "car-input" placeholder="选填，目的地址"
+ <input class = "car-input" placeholder="请输入目的地地址"
   bindinput="getOrderAddress2" ></input>
   
  </view>
@@ -62,7 +74,7 @@
  
  <text class = "car-title2">出发时间</text>
 
- <view class = "car-input2" placeholder=''>{{car_time}}</view>
+ <input class = "car-input2" disabled = "true" placeholder='请选择拼车时间' value='{{car_time}}' > </input>
  </view>
 
    </picker>
@@ -95,11 +107,11 @@
  
  <text class = "car-title2">特殊说明</text>
 
- <input class = "car-input" placeholder='选填' bindinput="getCarAbout" ></input>
+ <input class = "car-input" placeholder='选填（具体时间，费用）' bindinput="getCarAbout" ></input>
  </view>
 
 
- <text class = "car_publish" bindtap='publish'>发布</text>
+ <text class = "car_publish" bindtap='onPublish'>发布</text>
 
 </view>
 

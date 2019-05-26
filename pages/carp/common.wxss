@@ -50,6 +50,24 @@ margin-top: 50rpx;
 }
 
 
+
+.car-title4{
+
+  color: #333;
+  align-items: center;
+  background: #eee;
+  width: 70rpx;
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: inline-block;
+  border-radius:5px;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+
+}
+
+
 .car-title3{
 
   color: #333;

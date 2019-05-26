@@ -1,31 +1,33 @@
+<import src="../../wxParse/wxParse.wxml"/>
+
 <view class = 'parent'>
 
 
 
 <view class = "product-banner">
 <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
-      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+      <block wx:for="{{product.images}}" wx:for-index="index">  
         <swiper-item>  
           <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  
       </block>  
     </swiper> 
 
-    <view class = "hot-shop"> 
+    <!-- <view class = "hot-shop"> 
     
     <image class = "hot-shop-img" src='../../image/icon_hot.png'></image>
     <text class = "hot-text">100</text>
-    </view>
+    </view> -->
 </view>
 
-<text>标题标题标题标题标题标题标题标题标题标题标题标题标题标题</text>
+<text class='product-names'>{{product.name}}</text>
 
-<view>
+<view class = "item-price">
 
-<text>¥123／份</text>
+<text class='product-txt-price'>¥ {{product.price}}/{{product.unit}}</text>
 
 
-<text>111人浏览</text>
+<text class = "product-scan">{{product.view_total}}人浏览</text>
 
 </view>
 
@@ -34,18 +36,11 @@
 
 
  <view class = "info-product">
-  
-  <view class = "info-product-item">
-  
-<text>联系卖家</text>
-  </view>
 
-  <view class = "info-product-item">
+<text class = "info-product-item">联系卖家</text>
   
-
-<text>进入店铺</text>
-  </view>
-
+  
+<text class = "info-product-item" bindtap='onShop'>进入店铺</text>
 
  
  </view>
@@ -53,7 +48,9 @@
 
   <view class = "product-line"> </view>
 
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
 
-<web-view src = "http://agent.lhxq.top:8080/static/register/index.html"></web-view>
 
 </view>

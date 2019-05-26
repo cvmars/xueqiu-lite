@@ -6,8 +6,22 @@
 
 .shop-title{
 
-  margin-left: 30rpx;
-  margin-top: 30rpx;
+  padding-left: 30rpx;
+ padding-right: 30rpx;
+ padding-top: 30rpx;
+ width: 100%;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.shop-title2{
+
+  padding-left: 30rpx;
+ padding-right: 30rpx;
+ padding-top: 30rpx;
+ padding-bottom: 26rpx;
+ width: 100%;
+ background: #f7f7f7;
   font-size: 30rpx;
   font-weight: bold;
 }
@@ -32,8 +46,14 @@
 
 width: 100vw;
 }
+
+
 .shop-recommend-product{
 
+width: 100%;
+flex-direction: column;
+display:flex;
+align-items:center;
 
 }
 
@@ -43,16 +63,28 @@ width: 100vw;
  display: flex;
  flex-direction: column;
  justify-content: center;
+ width: 100%;
+ overflow: hidden;
 }
 
 .item-shop-text{
 
   font-size: 30rpx;
   margin-top: 3rpx;
+  overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+
 }
 
 .item-product-text{
-  font-size: 30rpx;
+
+font-size: 26rpx;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+max-width: 140rpx;
+margin-top: 30rpx;
 }
 
 .image-shop{
@@ -64,9 +96,10 @@ width: 100vw;
 
 .shop-recommend-item{
 
-  margin-left: 40rpx;
-  margin-right: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   margin-top: 30rpx;
+  margin-bottom: 26rpx;
   column-count:5;/*column-count 属性规定元素应该被分隔的列数：*/
 }
 
@@ -175,3 +208,188 @@ padding: 2dp;
   background: #eee;
   margin-top: 25rpx;
 }
+
+
+
+.product-back{
+ background: #f7f7f7;
+
+}
+
+.free-WaterfallFlow{
+ 
+  width: 94%;
+  margin-left: 3%;
+  column-count:2;/*column-count 属性规定元素应该被分隔的列数：*/
+}
+.free-WaterfallFlow .flex-wrap{
+  display: inline-block;
+  width:100%;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: 20rpx;
+  /* border: 5px solid #eee; */
+  /* box-shadow: 0 1px 1px #eee; */
+}
+
+.product-desc{
+  font-size: 25rpx;
+  color: #333;
+  margin-top: 10rpx;
+
+}
+
+
+.product-address{
+
+  font-size: 25rpx;
+  color: #000;
+  margin-top: 10rpx;
+  direction: flex;
+  position: relative;
+}
+.header-avator{
+  width: 100%;
+  height: 46vw;
+}
+
+.product-info-item-icon3{
+
+  width: 30rpx;
+  height:30rpx;
+  right: 20rpx;
+  position: absolute;
+}
+
+.hot-shop-img{
+
+  width: 50rpx;
+  height: 60rpx;
+
+}
+.hot-text{
+
+  font-size: 30rpx;
+  color: #333;
+}
+
+.hot-shop{
+
+  display: flex;
+  flex-direction:row;
+  position: absolute;
+  bottom: 1rpx;
+  right: 20rpx;
+  align-items: center;
+}
+
+
+.header-avator{
+  width: 100%;
+  height: 46vw;
+}
+.item-user{
+  display: flex;
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+
+.product-txt-price{
+
+margin-left: 20rpx;
+color: #fd6000;
+font-weight: bold;
+font-size: 30rpx;
+
+}
+
+.zhiding-userinfo{
+
+font-size: 32rpx;
+color: #333;
+font-weight: normal;
+margin-left: 20rpx;
+/* margin:auto; */
+}
+
+.product-price{
+
+  margin-bottom: 20rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+
+/* 两列列表样式 start */
+.gridview {
+    position: relative;
+    overflow: hidden;
+}
+ .gridview:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+} 
+ .gridview:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-left: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+} 
+.gridview-item {
+    position: relative;
+    float: left;
+    padding: 20px 10px;
+    width:50%;
+    box-sizing: border-box;
+}
+ .gridview-item:before {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-right: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.);
+    transform: scaleX(0.2);
+} 
+ .gridview-item:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.2);
+} 
+.gridview-item:active {
+    background-color: #ECECEC;
+}  

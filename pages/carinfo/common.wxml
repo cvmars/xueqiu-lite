@@ -12,7 +12,7 @@
 
  </view>
  
- <text class = "car-input" placeholder=''>{{carinfo.car_out_address1}} {{carinfo.car_out_address2}}</text>
+ <text class = "car-input" placeholder=''>{{carinfo.area_from_text}}</text>
  </view>
 
 
@@ -24,7 +24,7 @@
 
  </view>
  
- <text class = "car-input" placeholder=''>{{carinfo.car_order_address1}} {{carinfo.car_order_address2}}</text>
+ <text class = "car-input" placeholder=''>{{carinfo.area_to_text}} </text>
  </view>
 
 
@@ -35,7 +35,7 @@
  
  <text class = "car-title2">出发时间</text>
 
- <text class = "car-input" placeholder=''>{{carinfo.car_time}}</text>
+ <text class = "car-input" placeholder=''>{{carinfo.start_at}}</text>
  </view>
 
   <view class = "car-item">
@@ -57,14 +57,14 @@
  
  <text class = "car-title2">手机号</text>
 
- <text class = "car-input"  placeholder=''>{{carinfo.car_phone}}</text>
+ <text class = "car-input"  placeholder=''>{{carinfo.tel}}</text>
  </view>
 
   <view class = "car-item">
  
  <text class = "car-title2">特殊说明</text>
 
- <text class = "car-input" placeholder=''>{{carinfo.car_about}}</text>
+ <text class = "car-input" placeholder=''>{{carinfo.mark}}</text>
  </view>
 </view>
 

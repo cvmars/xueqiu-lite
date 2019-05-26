@@ -14,8 +14,21 @@
   }
 }
 
+.view-login{
+
+  height: 20rpx;
+
+  width: 100%;
+}
+.txt-login{
+
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
 view, input, text {
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #333;
 }
 
@@ -49,7 +62,7 @@ view, input, text {
   margin: 0 auto;
   background: #fff;
   z-index: 10001;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
   padding: 30rpx;
@@ -59,6 +72,7 @@ view, input, text {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  font-weight: bold;
 }
 
 .dialog-wxapp-container__title view {
@@ -72,7 +86,7 @@ view, input, text {
 }
 
 .dialog-wxapp-container__body {
-  padding-top: 10rpx;
+  padding-top: 20rpx;
 }
 
 .dialog-wxapp-container__footer {

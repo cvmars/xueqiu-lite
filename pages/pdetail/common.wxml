@@ -2,18 +2,18 @@
 
 <view class = "product-banner">
 <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
-      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+      <block wx:for="{{product.images}}" wx:for-index="index">  
         <swiper-item>  
           <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  
       </block>  
     </swiper> 
-
+<!-- 
     <view class = "hot-shop"> 
     
     <image class = "hot-shop-img" src='../../image/icon_hot.png'></image>
     <text class = "hot-text">100</text>
-    </view>
+    </view> -->
 </view>
 
 
@@ -22,13 +22,13 @@
 <view class = "product" >
 
 
-<image class = "product-image" src='{{carinfo.shop_url}}' mode="aspectFit">
+<image class = "product-image" src='{{product.logo}}' mode="aspectFit">
 
 </image>
 
 <view>
 
-<view class = "product-name">{{carinfo.shop_name}}</view>
+<view class = "product-name">{{product.name}}</view>
 
 <view class = "product-info">
 <text class = "product-type">{{carinfo.shop_type}}</text>
@@ -44,10 +44,9 @@
 </view>
 
 <view class = "product-desc">
- {{carinfo.shop_dec}}
+ {{product.desc}}
 </view>
 <view>
-
 
 
 
@@ -88,7 +87,7 @@
  
  <image class = "product-info-item-icon" src='../../image/icon_phone.png'></image>
  <text class = "product-info-item-title">电话</text>
-  <text class = "product-info-item-content">13777477649</text>
+  <text class = "product-info-item-content">{{product.tel}}</text>
    <image bindtap = "onCall" class = "product-info-item-icon1" src='../../image/icon_call.png'></image>
  </view>
    
@@ -100,7 +99,7 @@
  
  <image class = "product-info-item-icon" src='../../image/icon_weixin.png'></image>
  <text class = "product-info-item-title">微信</text>
-  <text class = "product-info-item-content">13777477649</text>
+  <text class = "product-info-item-content">{{product.wechat}}</text>
    <image class = "product-info-item-icon1" src='../../image/icon_copy.png' bindtap='onCopy'></image>
  </view>
 
@@ -110,7 +109,7 @@
  
  <image class = "product-info-item-icon" src='../../image/location_product.png'></image>
  <text class = "product-info-item-title">地址</text>
-  <text class = "product-info-item-content"> {{carinfo.shop_address}}</text>
+  <text class = "product-info-item-content"> {{product.address}}</text>
 
  </view>
 
@@ -142,20 +141,20 @@
  <view class = "product-back">
  <view class="free-WaterfallFlow">
       
-        <view class="flex-wrap" wx:for="{{products}}"   bindtap='onProductDetail' wx:for-item="product">
+        <view class="flex-wrap" wx:for="{{productlist}}"   bindtap='onProductDetail' wx:for-item="product" data-index="{{index}}">
       
-            <view bindtap="readDetail" data-id="{{user.id}}">
+            <view bindtap="readDetail" data-id="{{product.id}}">
 
-        <image class="header-avator" src="{{product.product_url}}" mode='aspectFill'>
+        <image class="header-avator" mode='aspectFill' src='{{product.img}}'>
         </image>
 
         <view class="item-user">
-          <text class="zhiding-userinfo">{{product.product_name}}</text>
+          <text class="zhiding-userinfo">{{product.name}}</text>
         </view>
 
         <view class = "product-price">
     
-        <view class = "product-txt-price">¥ 1322</view>
+        <view class = "product-txt-price">¥ {{product.price}}</view>
 
          <image bindtap = "onCall" class = "product-info-item-icon3" src='../../image/icon_shop_car.png'></image>
         </view>

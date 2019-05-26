@@ -2,7 +2,7 @@
 
 <view class="container log-list">
 
-  <view class="list-item" wx:for="{{results}}" wx:for-item="user" >
+  <view class="list-item" wx:for="{{carData}}" wx:for-item="user" >
 
 
   <view data-index="{{index}}" class = "car-center" bindtap='onCarDetail'>
@@ -11,26 +11,26 @@
   <view >
 
   <text class="car-title">从</text>
-  <text class="car-content">{{user.car_out_address1}} {{user.car_out_address2}}</text>
+  <text class="car-content">{{user.area_from_text}} </text>
   </view>
 
    <view class = "car-info">
 
   <text class = "car-title">到</text>
-  <text class = "car-content">{{user.car_order_address1}} {{user.car_order_address2}}</text>
+  <text class = "car-content">{{user.area_to_text}}</text>
   </view>
 
 
    <view class = "car-info">
 
   <text class = "car-title">时间</text>
-  <text class = "car-content">{{user.car_time}}</text>
+  <text class = "car-content">{{user.start_at}}</text>
   </view>
 
    <view class = "car-info">
 
   <text class = "car-title">剩余</text>
-  <text class = "car-content">{{user.car_number}}座</text>
+  <text class = "car-content">{{user.site_count}}座</text>
   </view>
 
  <view class= "item-clear" data-index="{{index}}" catchtap='onClear'>删除</view>

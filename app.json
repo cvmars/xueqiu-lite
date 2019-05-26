@@ -1,13 +1,14 @@
 {
   "pages": [
+  
     "pages/product/common",
+    "pages/pppdetail/common",
     "pages/car/logs",
     "pages/carm/logs",
     "pages/carinfo/common",
     "pages/setting/common",
     "pages/comment/common",
-    "pages/carp/common",
-    "pages/pppdetail/common",
+   "pages/carp/common",
     "pages/pdetail/common",
     "pages/plist/common",
     "pages/common/common",

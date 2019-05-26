@@ -1,13 +1,14 @@
 <view class = 'parent'>
 
+<!-- <button type='default' session-from='{"nickName":"test","avatarUrl":"http://t-1.tuzhan.com/bccb9e3e60c5/p-2/l/2013/10/28/17/bd83f0fa80744eb9bf9cf68cf04997aa.jpg","open_param":"12"}' open-type="contact" >客服带参回复（固定头像）</button> -->
 
 <view class='home-sroll'>
 
 
 <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
-      <block wx:for="{{imgUrls}}" wx:for-index="index">  
+      <block wx:for="{{bannerData}}" wx:for-index="index" wx:for-item="banner">  
         <swiper-item>  
-          <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+          <image src="{{banner.image}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  
       </block>  
     </swiper> 
@@ -16,6 +17,8 @@
     </view>
 
 </view>
+
+
 
 <view class = "item-shop">
 
@@ -46,10 +49,10 @@
 
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua" >
   
-  <image src='../../image/icon_shop_tab4.png' class = "image-shop"></image>
-  <text class = "item-shop-text">约车服务</text>
+  <image src='../../image/icon_shop_tab4.png' class = "image-shop" bindtap='onCar'></image>
+  <text class = "item-shop-text" bindtap='onCar'>约车服务</text>
   </view>
 
 </view>
@@ -63,53 +66,51 @@
 推荐店铺
 </view>
 
-<!-- 推荐店铺-->
+
+
+<!-- <view class="gridview" style='background:white;'>
+  <view class="gridview-item" wx:for="{{shopData}}" wx:for-index="index" wx:for-item = "shop">
+   
+<view class='shop-recommend-product' bindtap='onShop'>
+
+
+  <image src='{{shop.logo}}' class = "image-shop"></image>
+  <text class = "item-product-text">{{shop.name}}</text>      
+
+</view>
+</view>
+
+</view> -->
+
+
+<!-- 推荐店铺 -->
 <view class="shop-recommend-item">
 
- <view wx:for="{{imgUrls}}" wx:for-index="index">  
+ <view wx:for="{{shopData}}"  wx:for-item = "shop" >  
 
+<view data-index="{{index}}" class='shop-recommend-product' bindtap='onShop'>
 
-
-<view class='shop-recommend-product'>
-
-  
-  <image src='../../image/icon_shop_tab1.png' class = "image-shop"></image>
-  <text class = "item-product-text">特产店</text>      
+  <image src='{{shop.logo}}' class = "image-shop"></image>
+  <text class = "item-product-text">{{shop.name}}</text>      
      </view>  
 </view>
 
 </view>
 
-<!--11-->
-<view class="shop-recommend-item">
-
- <view wx:for="{{imgUrls}}" wx:for-index="index">  
-
-
-
-<view class='shop-recommend-product'>
-
-  
-  <image src='../../image/icon_shop_tab1.png' class = "image-shop"></image>
-  <text class = "item-product-text">特产店</text>      
-     </view>  
-</view>
-
-</view>
 <!--22-->
 </view>
 
 
 <!--推荐产品-->
 
-<view class= "shop-title">
+<view class= "shop-title2">
 推荐商品
 </view>
 
 
 
-
- <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="shop" data-index="{{index}}">
+<!-- 
+ <view class="list-item" bindtap = "onDetail" wx:for="{{productData}}" wx:for-item="product" data-index="{{index}}">
 
 
 <view class = "product" >
@@ -141,8 +142,37 @@
 </view>
 
 </view>
+ -->
+
+
+ <view class = "product-back">
+ <view class="free-WaterfallFlow">
+      
+        <view class="flex-wrap" wx:for="{{productData}}"   bindtap='onProductDetail' wx:for-item="product" data-index="{{index}}">
+      
+            <view data-id="{{user.id}}">
+
+        <image class="header-avator" src="{{product.img}}" mode='aspectFill'>
+        </image>
+
+        <view class="item-user">
+          <text class="zhiding-userinfo">{{product.name}}</text>
+        </view>
+
+        <view class = "product-price">
+    
+        <view class = "product-txt-price">¥ 1322</view>
+
+         <image bindtap = "onCall" class = "product-info-item-icon3" src='../../image/icon_shop_car.png'></image>
+        </view>
+      </view>
+        </view>
+  
+     
+    </view>
+ </view>
 
  <view class = "product-line"> </view>
-</view>
+<!-- </view> -->
 
 </view>
