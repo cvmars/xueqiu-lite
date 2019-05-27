@@ -16,7 +16,7 @@ Page({
     hiddenHome:true,
     userInfo:{},
     carType: ['车找人', '人找车'],
-    carRang: ['国内拼车', '市内拼车', '县内拼车'],
+    carRang: ['县内拼车', '市内拼车', '省内拼车', '跨省拼车'],
     showLogin:''
   },
   getUserInfo: function (e) {

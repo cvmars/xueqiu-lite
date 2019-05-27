@@ -1,3 +1,10 @@
+
+
+const app = getApp()
+const util = require('../../utils/api.js')
+const timeUtils = require('../../utils/util.js')
+const API_SHOP = '/customer/store/' //店铺列表
+
 Page({
 
   /**
@@ -6,42 +13,61 @@ Page({
   data: {
     
     results:[],
-    imgUrls: [
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png'
-    ],
     current: 0,
     animationData: {},
-    animationData2: {}
+    animationData2: {},
+    shopData:[],
+    mCurPage:1
   },
 
+  //获取店铺列表
+  getShop: function (option) {
+
+    let that = this
+    let data = {}
+    data['tags'] = option 
+
+    util.Requests(util.getBaseUrl() + API_SHOP, data).then((res) => {
+
+      if (that.data.mCurPage == 1) {
+
+        that.setData({
+
+          shopData: []
+        })
+      }
+
+      let resTemp = this.data.shopData
+
+      for (var i = 0; i < res.data.results.length; i++) {
+        var item = res.data.results[i]
+
+        if(item.tags.length > 0){
+          item.shop_type = item.tags[0].name
+        }
+      
+        resTemp.push(item)
+      }
+
+      that.setData({
+
+        shopData: resTemp
+      })
+      console.log("data" + that.data.shopData)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+    var id = options.id;
     this.stretch(350)
     
     var that = this
     
-    wx.cloud.init()
+    this.getShop(id)
   
-    const db = wx.cloud.database();
-
-    db.collection('shop').get({
-
-      success: function (res) {
-
-        that.setData({
-
-          results: res.data
-        })
-        console.log("res :" + JSON.stringify(res.data))
-      }
-    })
   },
 
   /**

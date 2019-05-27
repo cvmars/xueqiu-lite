@@ -1,24 +1,16 @@
 <view class = 'parent'>
 
-
-
-<view class = "product">
-
-
 <image class = "product-image" mode="aspectFill" src='{{carinfo.topic_url}}'>
 
 </image>
 
+<view class = "product">
 
 <view class = "product-item">
 
 <view class = "product-name">#{{carinfo.topic_name}}#</view>
 
-<view class = "product-info">
-
-</view>
-
-<view class = "product-desc">
+<view class = "topic_desc">
  {{carinfo.topic_desc}}
 </view>
 
@@ -26,33 +18,41 @@
 </view>
 
 
-
 </view>
 
- <view class = "product-line"> </view>
+ <view class = "product-line10"> </view>
 
 
+<text class =  "topic-titles"> 全部动态 </text>
 
- <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="user"  data-index="{{index}}" >
-
+<view class="gridview" style='background:white;'>
+  <view class="gridview-item" bindtap = "onDetail" wx:for="{{results}}"wx:for-item="user"  data-index="{{index}}">
+  
 
 <view class = "product">
 
 <view class = "product-item">
 
-<view class = "product-name">@{{user.createName}}</view>
 
-<view class = "product-info">
+<view class= "topic-img-place">
 
-</view>
+<image class = "product-image-item"  mode="aspectFill"  src='{{user.topic_img}}'>
+
+</image>
+
 
 <view class = "product-desc">
  {{user.topic_content}}
 </view>
 
+</view>
 
-<view class = "product-time">
- {{user.friendTime}}
+
+<view class = "topic-img-place2">
+
+<image class = "topic-d-image" src='{{user.createAvator}}'></image>
+<text class = "product-name">{{user.createName}}</text>
+
 </view>
 
 
@@ -60,13 +60,19 @@
 
 </view>
 
-<image class = "product-image-item" mode = 'widthFix' src='{{user.topic_img}}'>
+</view>
 
-</image>
+  </view>
+</view>
 
- <view class = "product-line"> </view>
+
+
+<view class = "topic-bottom">
+
+<view class = "topic-bottom-item"  >
+<image class = "topic-publish-img" bindtap = "onPublish" src='../../image/icon_topic.png'></image>
+
+<text class = "topic-publish-text">参与话题</text>
 </view>
 
 </view>
-
-<image bindtap = "onPublish" class = "phblish"src='../../image/ic_publish.png'></image>

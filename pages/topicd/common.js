@@ -66,8 +66,12 @@ Page({
     if(options){
       shopid = options.topicid
     }
-  
+
     console.log('shopid :' + shopid)
+    wx.cloud.init({
+      env: 'lianhua-82fcb3',
+      traceUser: true
+    })
 
     const db = wx.cloud.database()
 

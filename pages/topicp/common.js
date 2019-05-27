@@ -168,6 +168,13 @@ if(userinfo == ""){
       return;
     }
 
+    if (this.data.cloudImg == '') {
+      wx.showToast({
+        title: '请添加图片'
+      });
+      return;
+    }
+
     if (this.data.userinfo == "") {
 
     this.setData({
@@ -188,7 +195,8 @@ if(userinfo == ""){
         topic_content:that.data.ceshi,
         topic_img:that.data.cloudImg,
         createTime: timestamp,
-        createName: that.data.userInfo.nickName
+        createName: that.data.userInfo.nickName,
+        createAvator: that.data.userInfo.avatarUrl
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id

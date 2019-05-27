@@ -72,8 +72,6 @@ let data = {}
   onLoad: function (options) {
     
 
-  
-
     var shopid = options.id
     console.log('shopid :' + shopid)
 

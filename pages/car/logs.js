@@ -16,18 +16,22 @@ Page({
     openid:'',
     showLogin:false,
     carType: ['车找人', '人找车'],
-    carRang: ['国内拼车', '市内拼车', '县内拼车'],
+    carRang: ['县内拼车', '市内拼车', '省内拼车', '跨省拼车'],
     curPage : 1,
     car_type_str:'全部',
     totalCount: 100,
     pageSize: 4,
     mCurPage: 1,
+    range_type:'',
     searchKeyfrom:'',
     searchKeyto: '',
     shareInfo:{},
     car_service_type:'',
+    orderStr:'-update_at',
+    orderCarStr: '按发布时间排序',
+    carData:[],
 
-    carData:[]
+    avator:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=179882489,2671999502&fm=111&gp=0.jpg'
 
   },
  
@@ -38,7 +42,8 @@ Page({
     this.setData({
       mCurPage: 1,
       car_service_type: '',
-      car_type_str:'全部'
+      car_type_str:'全部',
+      range_type:''
     })
     data['page'] = this.data.mCurPage
     this.getCarList(data)
@@ -51,7 +56,8 @@ Page({
     this.setData({
       mCurPage: 1,
       car_service_type: 1,
-      car_type_str: '车找人'
+      car_type_str: '车找人',
+      range_type:''
     })
     data['page'] = this.data.mCurPage
     this.getCarList(data)
@@ -63,7 +69,8 @@ Page({
     this.setData({
       mCurPage: 1,
       car_service_type: 2,
-       car_type_str: '人找车'
+       car_type_str: '人找车',
+      range_type:''
     })
     data['page'] = this.data.mCurPage
 
@@ -76,10 +83,12 @@ Page({
     let data = {};
     this.setData({
       mCurPage: 1,
-      car_service_type: 0,
-      car_type_str: '市内拼车'
+      car_service_type: '',
+      car_type_str: '市内拼车',
+      range_type:'1'
     })
     data['page'] = this.data.mCurPage
+    this.getCarList(data)
   },
 
 
@@ -88,10 +97,12 @@ Page({
     let data = {};
     this.setData({
       mCurPage: 1,
-      car_service_type: 0,
-      car_type_str: '县内拼车'
+      car_service_type: '',
+      car_type_str: '县内拼车',
+      range_type:0
     })
     data['page'] = this.data.mCurPage
+    this.getCarList(data)
   },
 
 
@@ -117,7 +128,6 @@ Page({
     util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, option).then((res) => {
 
     })
-
   },
   getUserInfo: function (e) {
     console.log("helo" + e)
@@ -153,6 +163,33 @@ Page({
       })
   }, 
   
+  onChangeOrder:function(e){
+
+    if (this.data.orderStr == "-start_at"){
+
+this.setData({
+
+  orderStr: '-update_at',
+  orderCarStr: '按出发时间排序',
+})
+
+    }else{
+
+      this.setData({
+
+        orderStr: '-start_at',
+        orderCarStr: '按发布时间排序',
+      })
+
+    }
+
+    let data = {};
+    this.setData({
+      mCurPage: 1,
+    })
+    data['page'] = this.data.mCurPage
+    this.getCarList(data)
+  },
 
   //获取店铺列表
   getCarList: function (option) {
@@ -162,8 +199,10 @@ Page({
     data['area_from_text__contains'] = this.data.searchKeyfrom
     data['area_to_text__contains'] = this.data.searchKeyto
     data['car_service_type'] = this.data.car_service_type
-  
-    console.log("page :" + option['page'])
+    data['range_type'] = this.data.range_type
+    data['ordering'] = this.data.orderStr
+    
+    console.log("page :" + option['page'] + "type :" +    this.data.range_type) 
     util.Requests(util.getBaseUrl() + API_CAR_LIST, data).then((res) => {
 
 
@@ -179,7 +218,10 @@ Page({
 
         for (var i = 0; i < res.data.results.length; i++) {
           var item = res.data.results[i];
-
+      
+          that.friendTime(item)
+          that.friendTime2(item)
+          that.carTime(item)
           resTemp.push(item)
       }
   
@@ -191,6 +233,67 @@ Page({
     })
   },
 
+  carTime(item){
+
+    item.carType = this.data.carType[parseInt(item.car_service_type) - 1]
+    item.carrang = this.data.carRang[parseInt(item.range_type)]
+  },
+
+  friendTime(item){
+
+    var request_time = item.start_at;
+    request_time = request_time.substring(0, 19);
+    request_time = request_time.replace(/-/g, '/');
+    var timestamp = new Date(request_time).getTime();
+    var oldTime = timestamp / 1000;
+   
+
+    var curTime = new Date().getTime() / 1000;
+
+    if (oldTime < curTime && curTime - oldTime < 24 * 60 * 60) {
+      item.friendTime = "今天";
+    } else if (oldTime > curTime && oldTime - curTime < 24 * 60 * 60) {
+
+      item.friendTime = "明天";
+    } else if (oldTime - curTime >= 24 * 60 * 60 && oldTime - curTime < 24 * 60 * 60 * 2) {
+
+      item.friendTime = "后天";
+    } else {
+      var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D');
+      item.friendTime = friendTime;
+    }
+  }, 
+  
+  friendTime2(item) {
+
+    var request_time = item.create_at;
+    request_time = request_time.substring(0, 19);
+    request_time = request_time.replace(/-/g, '/');
+    var timestamp = new Date(request_time).getTime();
+    var oldTime = timestamp / 1000;
+ 
+
+    var curTime = new Date().getTime() / 1000;
+
+    if (oldTime < curTime && curTime - oldTime < 24 * 60 * 60) {
+     
+     var nextTime = curTime - oldTime
+      if (nextTime < 60*60){
+        item.friendCreateTime =   parseInt((nextTime / 60) + 1) +"分钟前";
+      } else if (nextTime < 24 * 60 && nextTime > 60*60){
+
+        item.friendCreateTime = (parseInt(nextTime / (24*60)) + 1) + "小时前"
+
+      }else{
+        var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
+        item.friendCreateTime = friendTime;
+      }
+  
+    } else {
+      var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
+      item.friendCreateTime = friendTime;
+    }
+  },
 
   onLoad: function (options) {
 
@@ -266,7 +369,7 @@ Page({
       env: 'lianhua-82fcb3',
        traceUser : true})
   
-    this.getOpenid()     
+    // this.getOpenid()     
   },
 
   onReachBottom:function(e){

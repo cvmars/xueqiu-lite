@@ -104,7 +104,7 @@
   <text class = 'car-sort-title2'>({{car_type_str}})</text>
 
   <!-- <image src="../../image/icon_notice.png" class="car-notice" mode="aspectFill"/>  -->
-  <text class = 'car-sort'>按出发时间排序</text>
+  <text class = 'car-sort' bindtap='onChangeOrder'>{{orderCarStr}}</text>
 </view>
 
 
@@ -129,13 +129,33 @@
 
  <view  class = "car-userinfo">
     
- <image class = "product-image" mode="aspectFit" src='{{user.createAvator}}'>
+ <image class = "product-image" mode="aspectFit" src='{{avator}}'>
 
 </image>
 
-<view class = "product-name">{{user.createName}}</view>
+<view class = "product-name">{{user.createName}} cvmars</view>
 
-<view class = "product-time">{{user.friendTime}}</view>
+<view class = "product-time">{{user.friendTime}} 出发</view>
+  </view>
+
+
+  <view class = "car-info">
+
+  <text class = "car-title">拼车类型</text>
+  <text class = "car-content">{{user.carType}}</text>
+  </view>
+
+    <view class = "car-info">
+
+  <text class = "car-title">拼车范围</text>
+  <text class = "car-content">{{user.carrang}}</text>
+  </view>
+
+
+  <view class = "car-info">
+
+  <text class = "car-title">发布时间</text>
+  <text class = "car-content">{{user.friendCreateTime}}</text>
   </view>
 
 
@@ -145,6 +165,20 @@
   <text class="car-content">{{user.area_from_text}} </text>
   </view>
 
+
+   <view class = "car-info">
+
+  <text class = "car-title">途经</text>
+  <text class = "car-content">{{user.place_pass}} </text>
+  </view>
+
+   <view class = "car-info">
+
+  <text class = "car-title">电话</text>
+  <text class = "car-content">{{user.tel}} </text>
+  </view>
+
+
    <view class = "car-info">
 
   <text class = "car-title">到</text>
@@ -152,17 +186,18 @@
   </view>
 
 
-   <view class = "car-info">
-
-  <text class = "car-title">时间</text>
-  <text class = "car-content">{{user.start_at}}</text>
-  </view>
 
    <view class = "car-info">
-
   <text class = "car-title">剩余</text>
   <text class = "car-content">{{user.site_count}}座</text>
   </view>
+
+
+   <view class = "car-info">
+  <text class = "car-title">特殊说明</text>
+  <text class = "car-content">{{user.mark}}座</text>
+  </view>
+
 
    </view>
 

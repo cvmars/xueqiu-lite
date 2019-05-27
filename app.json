@@ -2,19 +2,22 @@
   "pages": [
   
     "pages/product/common",
+    "pages/topicd/common",
     "pages/pppdetail/common",
     "pages/car/logs",
     "pages/carm/logs",
     "pages/carinfo/common",
     "pages/setting/common",
     "pages/comment/common",
-   "pages/carp/common",
+    "pages/web/common",
+    "pages/video/common",
+    "pages/carp/common",
     "pages/pdetail/common",
     "pages/plist/common",
     "pages/common/common",
     "pages/login/common",
      "pages/topic/common",
-      "pages/topicd/common",
+    
       "pages/topicp/common"
   ],
   "window": {

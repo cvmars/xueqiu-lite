@@ -1,16 +1,61 @@
 /* pages/common/common.wxss */
 
+.topic-d-image{
+
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+}
+.topic-publish-img{
+  width: 40rpx;
+  height: 40rpx;
+
+}
+.topic-publish-text{
+
+  color: #fff;
+  font-size: 30rpx;
+  margin-left: 6rpx;
+}
+
+.topic-bottom{
+  position: fixed;
+  bottom: 60rpx;
+  display:flex;
+  justify-content:center;
+  width: 100%;
+}
+
+.topic-bottom-item{
+
+  background: #ff6600;
+  color: white;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  border-radius: 60rpx;
+  display:flex;
+  align-items:center;
+}
+
+.topic_desc{
+
+color: #666;
+font-size: 26rpx;
+margin-top: 10rpx;
+}
+
 .product{
 
   display: flex;
-  margin-top: 30rpx;
+  margin-top: 10rpx;
 }
 
 .product-image{
 
-  width :50pt;
-  height:40pt;
-  margin-left: 30rpx;
+  width :100%;
+  height:400rpx;
   border-radius: 8rpx;
 }
 
@@ -18,18 +63,15 @@
 
   position: absolute;
   right: 20rpx;
-  top: 20rpx;
   font-size: 28rpx;
+  top: 1rpx;
 }
 
 
 .product-image-item{
 
-  width :100pt;
-  height:100pt;
-  margin-left: 30rpx;
-  margin-top: 30rpx;
-
+  width :47vw;
+  height:60vw;
 }
 .phblish{
 
@@ -43,9 +85,10 @@
 .product-name{
 
   font-size: 30rpx;
-  margin-top: 6rpx;
-
+  position: relative;
+   margin-top: 6rpx;
 color: #333;
+margin-left: 10rpx;
 font-weight: bold;
 }
 
@@ -78,6 +121,15 @@ padding: 2dp;
   position: relative;
 }
 
+.topic-titles{
+
+  padding: 30rpx;
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
 .product-scan{
 
   position: absolute;
@@ -87,8 +139,14 @@ padding: 2dp;
 }
 .product-desc{
   font-size: 25rpx;
-  color: #333;
+  color: #fff;
+  font-weight: bold;
   margin-top: 20rpx;
+  top: 10rpx;
+  position: absolute;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+
 
 }
 
@@ -99,9 +157,55 @@ padding: 2dp;
   margin-top: 10rpx;
 }
 
+
+.gridview {
+ width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  column-count:2;/*column-count 属性规定元素应该被分隔的列数：*/
+  background: #f7f7f7;
+}
+
+.topic-img-place{
+
+ width :47vw;
+  height:60vw;
+  position: relative;
+}
+
+.topic-img-place2{
+
+  position: relative;
+
+  display: flex;
+
+  align-items:center;
+}
+
+
+
+
+
+.gridview-item {
+  display: inline-block;
+  width:100%;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: 20rpx;
+}
+ 
+
 .product-line{
 
   height: 1px;
+  width: 100%;
+  background: #eee;
+  margin-top: 25rpx;
+}
+
+.product-line10{
+
+  height: 10px;
   width: 100%;
   background: #eee;
   margin-top: 25rpx;

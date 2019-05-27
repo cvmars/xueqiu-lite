@@ -1,19 +1,19 @@
 <view class = 'parent'>
 
- <view class="list-item" bindtap = "onDetail" wx:for="{{results}}" wx:for-item="shop" data-index="{{index}}">
+ <view class="list-item" bindtap = "onDetail" wx:for="{{shopData}}" wx:for-item="shop" data-index="{{index}}">
 
 
 <view class = "product" >
 
 
-<image class = "product-image" src='{{shop.shop_url}}' mode="aspectFit">
+<image class = "product-image" src='{{shop.logo}}' mode="aspectFit">
 
 </image>
 
 
 <view class = "product-item">
 
-<view class = "product-name">{{shop.shop_name}}</view>
+<view class = "product-name">{{shop.name}}</view>
 
 <view class = "product-info">
 <text class = "product-type">{{shop.shop_type}}</text>
@@ -21,12 +21,12 @@
 </view>
 
 <view class = "product-desc">
- {{shop.shop_dec}}
+ {{shop.desc}}
 </view>
 <view>
 
 <view class = "product-address">
-  {{shop.shop_address}}
+  {{shop.address_info}}
 </view>
 </view>
 </view>

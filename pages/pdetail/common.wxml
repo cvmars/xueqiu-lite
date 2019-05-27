@@ -7,7 +7,7 @@
           <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  
       </block>  
-    </swiper> 
+</swiper> 
 <!-- 
     <view class = "hot-shop"> 
     
@@ -16,11 +16,7 @@
     </view> -->
 </view>
 
-
-
-
 <view class = "product" >
-
 
 <image class = "product-image" src='{{product.logo}}' mode="aspectFit">
 

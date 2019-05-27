@@ -8,7 +8,7 @@
 <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color ="#eeeeee" easing-function ="easeInOutCubic">  
       <block wx:for="{{bannerData}}" wx:for-index="index" wx:for-item="banner">  
         <swiper-item>  
-          <image src="{{banner.image}}" class="slide-image" mode="aspectFill"/>  
+          <image   data-index="{{index}}" bindtap='onAD' src="{{banner.image}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  
       </block>  
     </swiper> 
@@ -33,7 +33,7 @@
   <!-- </block> -->
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua" bindtap='onProductList2'>
   
   <image src='../../image/icon_shop_tab2.png' class = "image-shop"></image>
   <text class = "item-shop-text">婚庆服务</text>
@@ -41,7 +41,7 @@
 
 
 
-  <view class = "shop-item-lianhua">
+  <view class = "shop-item-lianhua" bindtap='onProductList3'>
   
   <image src='../../image/icon_shop_tab3.png' class = "image-shop"></image>
   <text class = "item-shop-text"> 酒席预定</text>
@@ -65,22 +65,6 @@
 <view class= "shop-title">
 推荐店铺
 </view>
-
-
-
-<!-- <view class="gridview" style='background:white;'>
-  <view class="gridview-item" wx:for="{{shopData}}" wx:for-index="index" wx:for-item = "shop">
-   
-<view class='shop-recommend-product' bindtap='onShop'>
-
-
-  <image src='{{shop.logo}}' class = "image-shop"></image>
-  <text class = "item-product-text">{{shop.name}}</text>      
-
-</view>
-</view>
-
-</view> -->
 
 
 <!-- 推荐店铺 -->

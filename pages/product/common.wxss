@@ -38,7 +38,7 @@
 
 .swiper{
 
-  height: 20vh;
+  height: 30vh;
 }
 
 .slide-image{

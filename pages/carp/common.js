@@ -14,7 +14,7 @@ Page({
   data: {
     region: ['江西省', '萍乡市', '莲花县'],
     carType: ['车找人', '人找车'],
-    carRang:['国内拼车','市内拼车','县内拼车'],
+    carRang: ['县内拼车', '市内拼车', '省内拼车','跨省拼车'],
     out_address1:'',
     out_address2: '',
     order_address1: '',
@@ -113,6 +113,7 @@ Page({
       tel: that.data.car_phone,
       site_count: that.data.car_number,
       mark: that.data.car_about,
+      range_type:parseInt(that.data.car_rang),
       published: true,
 
       // car_out_address1: that.data.out_address1,

@@ -23,24 +23,73 @@ Page({
     shopData:[],
     productData: [],
     bannerData:[],
-    imgUrls: [
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png',
-      'https://6c69-lianhua-82fcb3-1253553185.tcb.qcloud.la/ic_launcher.png'
-    ],
+  
     current: 0,
     animationData: {},
     animationData2: {}
   },
 
+  onAD:function(e){
+ 
+    var index = parseInt(e.currentTarget.dataset.index);
+    // 取出id值
+    var objectId = this.data.bannerData[index].resource_str;
+
+    var ad_type = this.data.bannerData[index].ad_type
+
+
+
+    var strUrl = ''
+
+    if(ad_type == 0){
+
+      strUrl = "../web/common?id="
+      // objectId = '1'
+ 
+     
+    }else if(ad_type == 1){
+
+      strUrl = "../pdetail/common?id="
+    } else if (ad_type == 2) {
+
+      strUrl = "../pppdetail/common?id="
+    } else if (ad_type == 4) {
+
+      strUrl = "../topicd/common?topicid="
+    }
+     
+    wx.navigateTo({
+
+      url: strUrl + objectId
+
+    })
+
+
+  },
   onProductList:function(){
 
 
 wx.navigateTo({
-  url: '../plist/common',
+  url: '../plist/common?id=1',
 })
+
+  },
+
+  onProductList2: function () {
+
+
+    wx.navigateTo({
+      url: '../plist/common?id=2',
+    })
+
+  },
+
+  onProductList3: function () {
+
+
+    wx.navigateTo({
+      url: '../plist/common?id=3',
+    })
 
   },
   /**
@@ -239,6 +288,8 @@ let data = {}
    */
   onPullDownRefresh: function () {
     
+    this.onLoad()
+    wx.stopPullDownRefresh()
   },
 
   onDetail:function(e){

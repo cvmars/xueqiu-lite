@@ -82,6 +82,7 @@ flex-direction: row;
   width: 40rpx;
   height: 40rpx;
   margin-right: 10rpx; 
+  border-radius: 10rpx;
 }
 
 .search-input{
@@ -257,11 +258,10 @@ align-items:center;
 .car-title{
 
   color: #666;
-  width: 100rpx;
+  width: 150rpx;
   font-size: 32rpx;
   display: inline-block;
   font-weight: bold;
-
 }
 
 .car-content{

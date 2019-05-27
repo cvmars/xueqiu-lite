@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "莲花店铺"
+  "navigationBarTitleText": "莲花店铺",
+  "enablePullDownRefresh": true,
+   "backgroundColor":"#333"
 }
