@@ -17,7 +17,8 @@ Page({
     shopid:'',
     content:'',
     userInfo:{},
-    showLogin:false
+    showLogin:false,
+    isUserPublish:false
   }, 
   
   getUserInfo: function (e) {
@@ -37,6 +38,9 @@ Page({
       content: e.detail.value
     })
   },
+
+
+
   
   onComment :function(){
 
@@ -64,7 +68,7 @@ Page({
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id
-        this.setData({
+        that.setData({
           counterId: res._id,
           count: 1,
           content:''
@@ -193,11 +197,6 @@ Page({
     }
 
     console.log('findid :' + shopid)
-
-   
-  
-  
-
     const db = wx.cloud.database()
 
     let that = this;
@@ -220,28 +219,50 @@ Page({
 
           user: res.data[0]
         })
-        console.log("res :" + JSON.stringify(res.data))
+       
+
+        var opid = wx.getStorageSync('openid');
+
+        console.log('opid :' + opid)
+        console.log('opid u:' + that.data.user._openid)
+        if (opid == that.data.user._openid) {
+
+          that.setData({
+
+            isUserPublish : true
+          })    
+        }
+
+      }
+    })
+  },
+
+  onDelete(){
+
+
+    const db = wx.cloud.database();
+
+    db.collection('find').doc(this.data.shopid).remove({
+
+      success: function (res) {
+        wx.showToast({
+          title: '删除成功',
+        })
+
+        var pages = getCurrentPages(); // 当前页面
+        var beforePage = pages[pages.length - 2]; // 前一个页面
+        if (pages.length > 1) {
+          //上一个页面实例对象
+          var prePage = pages[pages.length - 2];
+          //关键在这里
+          prePage.onLoad()
+        }
+        wx.navigateBack({
+
+        });
       }
     })
 
-    // db.collection('topic').where({
-    //   topic_id: that.data.shopid
-    // }).get({
-
-    //   success: function (res) {
-    //     console.log('success')
-    //     that.setData({
-
-    //       carinfo: res.data[0]
-    //     })
-    //     console.log('info :' + JSON.stringify(that.data.carinfo))
-    //   },
-
-    //   error: function (e) {
-
-    //     console.log('error')
-    //   }
-    // })
   },
 
   //完善用户信息

@@ -9,7 +9,16 @@
 
 <view class = "product-item">
 
-<view class = "product-name">@{{user.createName}}</view>
+
+<view class = "find-info">
+
+<image class = "topic-d-image" src='{{user.createAvator}}'></image>
+
+<view class = "product-name">{{user.createName}}</view>
+
+<view class = "find-delete" bindtap = "onDelete" hidden='{{!isUserPublish}}'>删除</view>
+
+</view>
 
 
 <view class = "product-desc">

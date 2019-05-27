@@ -5,6 +5,38 @@
   margin-bottom: 100rpx;
 }
 
+.find-info{
+
+  position: relative;
+  width: 100vw;
+  display: flex;
+}
+
+.product-name{
+
+font-size: 30rpx;
+color: #333;
+font-weight: bold;
+margin-left: 10rpx;
+}
+
+
+.topic-d-image{
+
+ width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+}
+
+
+.find-delete{
+
+  position: absolute;
+  right: 20rpx;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+  color: #ff3b30;
+}
 .input_null{
     color: #C9C9C9;
 }
@@ -96,12 +128,6 @@
   display:block;
 }
 
-.product-name{
-
-font-size: 30rpx;
-color: #333;
-font-weight: bold;
-}
 
  .product-info
 {

@@ -55,11 +55,29 @@ Page({
     })
   },
 
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取到的openid: ', res.result)
+        var openid = res.result.openId;
+        that.setData({
+          openid: openid
+        })
+        console.log('openid :' + openid)
+        wx.setStorageSync('openid', openid);
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
   
+
+    this.getOpenid();
 
     var shopid
 
@@ -247,7 +265,7 @@ Page({
     return {
       title: that.data.carinfo.topic_name,
       path: '/pages/car/logs?topic=' + that.data.shopid + "&share=2",
-      // imageUrl: '../../image/bg_piaoliu_share.png',
+      imageUrl: that.data.carinfo.topic_url,
       success: function (res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));

@@ -6,6 +6,16 @@
   height: 40rpx;
   border-radius: 30rpx;
 }
+
+.topic-share{
+
+
+  position: absolute;
+  right: 30rpx;
+  background: #ff6600;
+  color: #fff;
+  bottom: 40rpx;
+}
 .topic-publish-img{
   width: 40rpx;
   height: 40rpx;
@@ -68,11 +78,7 @@ margin-top: 10rpx;
 }
 
 
-.product-image-item{
 
-  width :47vw;
-  height:60vw;
-}
 .phblish{
 
   position: fixed;
@@ -124,10 +130,10 @@ padding: 2dp;
 .topic-titles{
 
   padding: 30rpx;
-  font-size: 30rpx;
+  font-size: 36rpx;
   color: #333;
-  margin-top: 30rpx;
-  margin-bottom: 20rpx;
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
   font-weight: bold;
 }
 .product-scan{
@@ -137,17 +143,15 @@ padding: 2dp;
   font-size: 20rpx;
   color: #999;
 }
+
 .product-desc{
   font-size: 25rpx;
-  color: #fff;
+  color: #333;
   font-weight: bold;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 16rpx;
   top: 10rpx;
-  position: absolute;
-  margin-left: 10rpx;
   margin-right: 10rpx;
-
-
 }
 
 .product-address{
@@ -159,18 +163,24 @@ padding: 2dp;
 
 
 .gridview {
- width: 94%;
-  margin-left: 2%;
-  margin-right: 2%;
+  width: 100%;
   column-count:2;/*column-count 属性规定元素应该被分隔的列数：*/
   background: #f7f7f7;
 }
 
 .topic-img-place{
 
- width :47vw;
-  height:60vw;
+  width :50vw;
+  height:50vw;
   position: relative;
+  margin-top: 12rpx;
+}
+
+.product-image-item{
+
+  width :50vw;
+  height:50vw;
+  background: #fff;
 }
 
 .topic-img-place2{
@@ -180,11 +190,9 @@ padding: 2dp;
   display: flex;
 
   align-items:center;
+  
+  margin-top: 10rpx;
 }
-
-
-
-
 
 .gridview-item {
   display: inline-block;

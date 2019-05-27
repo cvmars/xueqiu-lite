@@ -369,7 +369,22 @@ this.setData({
       env: 'lianhua-82fcb3',
        traceUser : true})
   
-    // this.getOpenid()     
+    this.getOpenid()     
+  },
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log('云函数获取到的openid: ', res.result)
+        var openid = res.result.openId;
+        that.setData({
+          openid: openid
+        })
+        console.log('openid :' + openid)
+        wx.setStorageSync('openid', openid);
+      }
+    })
   },
 
   onReachBottom:function(e){

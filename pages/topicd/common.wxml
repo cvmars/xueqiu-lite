@@ -14,38 +14,21 @@
  {{carinfo.topic_desc}}
 </view>
 
-
 </view>
-
 
 </view>
 
  <view class = "product-line10"> </view>
 
 
-<text class =  "topic-titles"> 全部动态 </text>
+<view class =  "topic-titles"> 全部动态 </view>
 
 <view class="gridview" style='background:white;'>
   <view class="gridview-item" bindtap = "onDetail" wx:for="{{results}}"wx:for-item="user"  data-index="{{index}}">
-  
 
 <view class = "product">
 
 <view class = "product-item">
-
-
-<view class= "topic-img-place">
-
-<image class = "product-image-item"  mode="aspectFill"  src='{{user.topic_img}}'>
-
-</image>
-
-
-<view class = "product-desc">
- {{user.topic_content}}
-</view>
-
-</view>
 
 
 <view class = "topic-img-place2">
@@ -54,6 +37,24 @@
 <text class = "product-name">{{user.createName}}</text>
 
 </view>
+
+
+<view class = "product-desc">
+ {{user.topic_content}}
+</view>
+
+
+
+<view class= "topic-img-place">
+
+<image class = "product-image-item"  mode="aspectFill"  src='{{user.topic_img}}'>
+
+</image>
+
+</view>
+
+
+
 
 
 </view>
@@ -66,13 +67,16 @@
 </view>
 
 
-
 <view class = "topic-bottom">
 
-<view class = "topic-bottom-item"  >
-<image class = "topic-publish-img" bindtap = "onPublish" src='../../image/icon_topic.png'></image>
+<view class = "topic-bottom-item" bindtap = "onPublish"  >
+<image class = "topic-publish-img" src='../../image/icon_topic.png'></image>
 
 <text class = "topic-publish-text">参与话题</text>
 </view>
+
+<button class = "topic-share"  open-type='share' >
+ 分享
+</button>
 
 </view>

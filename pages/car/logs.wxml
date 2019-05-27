@@ -185,8 +185,6 @@
   <text class = "car-content">{{user.area_to_text}} {{user.car_order_address2}}</text>
   </view>
 
-
-
    <view class = "car-info">
   <text class = "car-title">剩余</text>
   <text class = "car-content">{{user.site_count}}座</text>
