@@ -135,78 +135,55 @@
 
 <view class = "product-name">{{user.createName}} cvmars</view>
 
-<view class = "product-time">{{user.friendTime}} 出发</view>
+<view class = "product-time"> </view>
   </view>
 
 
-  <view class = "car-info">
+  <view class = "car-1">
+  
+    <text class = "car-t1">{{user.carType}}</text>
 
-  <text class = "car-title">拼车类型</text>
-  <text class = "car-content">{{user.carType}}</text>
-  </view>
+    <text class = "car-t2">{{user.area_from_text}}</text>
 
-    <view class = "car-info">
+<image class = "car-img-arrow" src='../../image/icon_right.png'></image>
 
-  <text class = "car-title">拼车范围</text>
-  <text class = "car-content">{{user.carrang}}</text>
-  </view>
+  <text class = "car-t2">{{user.area_to_text}}</text>
 
-
-  <view class = "car-info">
-
-  <text class = "car-title">发布时间</text>
-  <text class = "car-content">{{user.friendCreateTime}}</text>
+ <text class = "car-t3">{{user.carrang}}</text>
   </view>
 
 
-  <view >
+<view class = "car-t4">· 途径区域：{{user.friendTime}} </view>
+  
+<view class ="car-t4">· 出发时间：{{user.friendTime}}</view>
 
-  <text class="car-title">从</text>
-  <text class="car-content">{{user.area_from_text}} </text>
-  </view>
-
-
-   <view class = "car-info">
-
-  <text class = "car-title">途经</text>
-  <text class = "car-content">{{user.place_pass}} </text>
-  </view>
-
-   <view class = "car-info">
-
-  <text class = "car-title">电话</text>
-  <text class = "car-content">{{user.tel}} </text>
-  </view>
+<view class = "car-t4">· 特殊说明：{{user.mark}} </view>
 
 
-   <view class = "car-info">
-
-  <text class = "car-title">到</text>
-  <text class = "car-content">{{user.area_to_text}} {{user.car_order_address2}}</text>
-  </view>
-
-   <view class = "car-info">
-  <text class = "car-title">剩余</text>
-  <text class = "car-content">{{user.site_count}}座</text>
-  </view>
+<view class ='line22' > </view>
 
 
-   <view class = "car-info">
-  <text class = "car-title">特殊说明</text>
-  <text class = "car-content">{{user.mark}}座</text>
-  </view>
+
+<view class = 'car-3'>
+
+<text class = "car-t5">· {{user.site_count}}空座</text>
+
+<text class = "car-t6">   {{user.friendCreateTime}}发布</text>
+
+<!--  {{user.tel}} -->
+<text class = "car-t7">拨打</text>
+
+</view>
+
 
 
    </view>
 
-<!-- <view class = "car-right">
-  已出行
-  </view> -->
 
    </view>
 
 
-<view class='line'></view>
+<view class='line10'></view>
 
 
   </view>

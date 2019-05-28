@@ -1,10 +1,10 @@
 {
   "pages": [
   
+    "pages/car/logs",
     "pages/product/common",
     "pages/topicd/common",
     "pages/pppdetail/common",
-    "pages/car/logs",
     "pages/carm/logs",
     "pages/carinfo/common",
     "pages/setting/common",
@@ -16,9 +16,8 @@
     "pages/plist/common",
     "pages/common/common",
     "pages/login/common",
-     "pages/topic/common",
-    
-      "pages/topicp/common"
+    "pages/topic/common",
+    "pages/topicp/common"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -16,7 +16,7 @@ Page({
     openid:'',
     showLogin:false,
     carType: ['车找人', '人找车'],
-    carRang: ['县内拼车', '市内拼车', '省内拼车', '跨省拼车'],
+    carRang: ['县', '市', '省', '国'],
     curPage : 1,
     car_type_str:'全部',
     totalCount: 100,
