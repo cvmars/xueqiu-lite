@@ -70,14 +70,14 @@
 <!-- 推荐店铺 -->
 <view class="shop-recommend-item">
 
- <view wx:for="{{shopData}}"  wx:for-item = "shop" >  
+ 
 
-<view data-index="{{index}}" class='shop-recommend-product' bindtap='onShop'>
+<view data-index="{{index}}" class='shop-recommend-product' bindtap='onShop' wx:for="{{shopData}}"  wx:for-item = "shop">
 
   <image src='{{shop.logo}}' class = "image-shop"></image>
   <text class = "item-product-text">{{shop.name}}</text>      
      </view>  
-</view>
+
 
 </view>
 

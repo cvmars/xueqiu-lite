@@ -50,10 +50,9 @@ width: 100vw;
 
 .shop-recommend-product{
 
-width: 100%;
-flex-direction: column;
-display:flex;
-align-items:center;
+width: 20%;
+display: inline-block;
+text-align: center
 
 }
 
@@ -84,7 +83,7 @@ overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis; 
 max-width: 140rpx;
-margin-top: 30rpx;
+margin-top: 15rpx;
 }
 
 .image-shop{
@@ -96,17 +95,15 @@ margin-top: 30rpx;
 
 .shop-recommend-item{
 
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  margin-top: 30rpx;
-  margin-bottom: 26rpx;
+  margin: 25rpx 2%;
   column-count:5;/*column-count 属性规定元素应该被分隔的列数：*/
+  display: flex;
+  flex-wrap: wrap;
+
 }
 
 .item-shop{
-  margin-top: 20rpx;
-  margin-left: 40rpx;
-  margin-right: 40rpx;
+  margin: 20rpx 2% 0;
   column-count:4;/*column-count 属性规定元素应该被分隔的列数：*/
 }
 
@@ -216,27 +213,28 @@ padding: 2dp;
 
 }
 
-.free-WaterfallFlow{
- 
-  width: 94%;
-  margin-left: 3%;
-  column-count:2;/*column-count 属性规定元素应该被分隔的列数：*/
-}
-.free-WaterfallFlow .flex-wrap{
-  display: inline-block;
-  width:100%;
-  border-radius: 5px;
-  background: white;
-  margin-bottom: 20rpx;
-  /* border: 5px solid #eee; */
-  /* box-shadow: 0 1px 1px #eee; */
-}
 
 .product-desc{
   font-size: 25rpx;
   color: #333;
   margin-top: 10rpx;
 
+}
+
+.free-WaterfallFlow{
+  padding:0 4%;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between
+}
+.free-WaterfallFlow .flex-wrap{
+  display: inline-block;
+  width:48%;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: 30rpx;
+  /* border: 5px solid #eee; */
+  /* box-shadow: 0 1px 1px #eee; */
 }
 
 
