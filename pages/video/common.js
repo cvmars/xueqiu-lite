@@ -5,7 +5,7 @@ Page({
    */
   data: {
     
-    videoPath:''
+    videoPath:'http://video.lhxq.top/1559124982101860.mp4'
   },
 
   /**
@@ -13,6 +13,13 @@ Page({
    */
   onLoad: function (options) {
     // var url = options.id;
+
+    var url = options.id
+
+    this.setData({
+
+      videoPath: url
+    })
     
   },
 

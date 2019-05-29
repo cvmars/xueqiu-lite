@@ -14,7 +14,7 @@ Page({
     times:[],
     userInfo: {},
     openid:'',
-    hiddenlist:false,
+    hiddenlist:false, //是否在审核中
     showLogin:false,
     carType: ['车找人', '人找车'],
     carRang: ['县', '市', '省', '国'],
@@ -412,6 +412,12 @@ this.setData({
             url: '../pdetail/common?shopid=' + objectId,
 
           })
+        } else if (shareType == 4) {
+          var objectId = options.product;
+          wx.navigateTo({
+            url: '../video/common?id=' + objectId,
+
+          })
         }
       }
     }
@@ -429,11 +435,10 @@ this.setData({
     db.collection('share').get({
       success: function (res) {
 
-          that.setData({
+          // that.setData({
 
-            hiddenlist: res.data[0].isHidden
-          })
-  
+          //   hiddenlist: res.data[0].isHidden
+          // })
        
         if (that.data.hiddenlist == true){
 

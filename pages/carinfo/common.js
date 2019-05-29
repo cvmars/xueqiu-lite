@@ -135,6 +135,8 @@ Page({
       item.friendCreateTime = friendTime;
     }
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -142,7 +144,7 @@ Page({
     var objectId = options.carid
     console.log('carid :' + objectId)
 
-    that.setData({
+    this.setData({
       carid: objectId
     })
 

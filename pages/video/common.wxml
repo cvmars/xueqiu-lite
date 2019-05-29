@@ -1,3 +1,9 @@
-<video src='{{videoPath}}'>
+<view class = "parent">
+
+
+
+<video class = 'lianhua-video' src='{{videoPath}}'>
 
 </video>
+
+</view>

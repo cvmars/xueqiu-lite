@@ -56,6 +56,8 @@ Page({
     } else if (ad_type == 4) {
 
       strUrl = "../topicd/common?topicid="
+    } else if (shareType == 5) {
+      strUrl = "../video/common?id="
     }
      
     wx.navigateTo({
