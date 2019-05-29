@@ -25,10 +25,11 @@ Page({
     car_rang_str: '',
     car_item_address:'',
     car_time:'',
-    car_number:'',
+    car_number:0,
     car_name:'',
     car_phone:'',
     car_about :'',
+    car_hidden: false,
     userInfo:'',
     customItem: '请选择', //为每一列的顶部添加一个自定义的项
     order_address1:'',
@@ -88,12 +89,15 @@ Page({
       return;
     }
 
-    if (this.data.car_number == '') {
+    if (this.data.car_type != 1 && this.data.car_number == '') {
       wx.showToast({
         title: '请输入剩余位置'
       });
       return;
     }
+
+
+
 
     if (this.data.car_phone == '') {
       wx.showToast({
@@ -116,18 +120,6 @@ Page({
       range_type:parseInt(that.data.car_rang),
       published: true,
 
-      // car_out_address1: that.data.out_address1,
-      // car_out_address2: that.data.out_address2,
-      // car_order_address1: that.data.order_address1,
-      // car_order_address2: that.data.order_address2,
-      // car_time: that.data.car_time,
-      // car_number: that.data.car_number,
-      // car_name: that.data.car_name,
-      // car_phone: that.data.car_phone,
-      // car_about: that.data.car_about,
-      // createTime: timestamp,
-      // createName: that.data.userInfo.nickName,
-      // createAvator: that.data.userInfo.avatarUrl
       }
       
     util.Requests_json(util.getBaseUrl() + API_CAR_LIST, data).then((res) => {
@@ -156,6 +148,19 @@ Page({
       car_type: e.detail.value,
       car_type_str: this.data.carType[e.detail.value]
     })
+
+    if(e.detail.value == 1){
+
+      this.setData({
+        car_hidden: true,
+    
+      })
+    }else{
+
+      this.setData({
+        car_hidden: false,
+      })
+    }
   },
 
   bindRangChange: function (e) {

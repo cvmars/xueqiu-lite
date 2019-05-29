@@ -40,6 +40,42 @@ function Requests(url, data) {
 }
 
 
+function Requests_put(url, data) {
+
+  var header = getHeader();
+
+  return new Promise((resolv, reject) => {
+    wx.request({
+      url: url,
+      data: data,
+      method: "put",
+      header: header,
+      success: function (res) {
+        if (res.data == "服务器异常") {
+          wx.hideLoading()
+          wx.showModal({
+            title: '提示',
+            content: '网络错误或服务器繁忙!',
+          })
+        } else {
+          console.log(res.data)
+          resolv(res.data)
+        }
+      },
+      fail: function (err) {
+        console.log(err)
+        reject(err)
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '网络错误或服务器繁忙!',
+        })
+      }
+    })
+  })
+}
+
+
 function Requests_Delete(url, data) {
 
   var header = getHeader();
@@ -184,5 +220,6 @@ module.exports = {
   Requests,
   Requests_json,
   Requests_Delete,
-  getBaseUrl
+  getBaseUrl,
+  Requests_put
 }

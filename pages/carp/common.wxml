@@ -43,10 +43,10 @@
  </view>
 
 
-   <view class = "car-item">
+   <view class = "car-item" hidden='{{car_hidden}}'>
  
  <view class = "car-left">
- <text class = "car-title4">途经</text>
+ <text class = "car-title4" >途经</text>
  </view>
  
  <input class = "car-input" placeholder="选填，途经地址"
@@ -72,14 +72,22 @@
 
   <view class = "car-item">
  
- <text class = "car-title2">出发时间</text>
+ <text class = "car-title2">出发日期</text>
 
  <input class = "car-input2" disabled = "true" placeholder='请选择拼车时间' value='{{car_time}}' > </input>
  </view>
 
    </picker>
 
-  <view class = "car-item">
+    <view class = "car-item">
+ 
+ <text class = "car-title2">特殊说明</text>
+
+ <input class = "car-input" placeholder='具体时间，如早上八点、费用、其他' bindinput="getCarAbout" ></input>
+ </view>
+
+
+  <view class = "car-item" hidden='{{car_hidden}}'>
  
  <text class = "car-title2">座位 </text>
 
@@ -103,12 +111,7 @@
  bindinput="getCarPhone"  type = "number" placeholder='输入手机号'></input>
  </view>
 
-  <view class = "car-item">
  
- <text class = "car-title2">特殊说明</text>
-
- <input class = "car-input" placeholder='选填（具体时间，费用）' bindinput="getCarAbout" ></input>
- </view>
 
 
  <text class = "car_publish" bindtap='onPublish'>发布</text>

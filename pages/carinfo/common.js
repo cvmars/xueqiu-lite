@@ -1,7 +1,7 @@
 const app = getApp()
 const util = require('../../utils/api.js')
 const timeUtils = require('../../utils/util.js')
-const API_MY_CAR = '/customer/my/service-car/' //我的拼车
+const API_MY_CAR = '/customer/service-car/' //我的拼车
 
 
 Page({
@@ -10,13 +10,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    carType: ['车找人', '人找车'],
+    carRang: ['县', '市', '省', '国'],
     carinfo:{},
     carid:'',
     hiddenHome:true,
     userInfo:{},
-    carType: ['车找人', '人找车'],
-    carRang: ['县内拼车', '市内拼车', '省内拼车', '跨省拼车'],
+    avator: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=179882489,2671999502&fm=111&gp=0.jpg',
     showLogin:''
   },
   getUserInfo: function (e) {
@@ -39,13 +39,101 @@ Page({
     let data = {}
     util.Requests(util.getBaseUrl() + API_MY_CAR + option, data).then((res) => {
 
+
+      var tempInfo = res.data;
+      that.carTime(tempInfo)
+      that.friendTime(tempInfo)
+      that.friendTime2(tempInfo)
+
      that.setData({
 
-       carinfo : res.data
+       carinfo: tempInfo
 
      })
 
     })
+  },
+
+
+  carTime(item) {
+
+    item.carType = this.data.carType[parseInt(item.car_service_type) - 1]
+    item.carrang = this.data.carRang[parseInt(item.range_type)]
+
+    if (parseInt(item.car_service_type) == 1) {
+
+      item.carTypeColor = '#F8B864'
+    } else {
+      item.carTypeColor = '#FF494B'
+    }
+
+
+    if (parseInt(item.range_type) == 0) {
+
+      item.carRangColor = '#5195FF'
+    } else if (parseInt(item.range_type) == 1) {
+      item.carRangColor = '#25CCBC'
+    } else if (parseInt(item.range_type) == 2) {
+      item.carRangColor = '#9972F1'
+    } else {
+      item.carRangColor = '#FF494B'
+    }
+  },
+
+  friendTime(item) {
+
+    var request_time = item.start_at;
+    request_time = request_time.substring(0, 19);
+    request_time = request_time.replace(/-/g, '/');
+    var timestamp = new Date(request_time).getTime();
+    var oldTime = timestamp / 1000;
+
+
+    var curTime = new Date().getTime() / 1000;
+
+    if (oldTime < curTime && curTime - oldTime < 24 * 60 * 60) {
+      item.friendTime = "今天";
+    } else if (oldTime > curTime && oldTime - curTime < 24 * 60 * 60) {
+
+      item.friendTime = "明天";
+    } else if (oldTime - curTime >= 24 * 60 * 60 && oldTime - curTime < 24 * 60 * 60 * 2) {
+
+      item.friendTime = "后天";
+    } else {
+      var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D');
+      item.friendTime = friendTime;
+    }
+  },
+
+  friendTime2(item) {
+
+    var request_time = item.create_at;
+    request_time = request_time.substring(0, 19);
+    request_time = request_time.replace(/-/g, '/');
+    var timestamp = new Date(request_time).getTime();
+    var oldTime = timestamp / 1000;
+
+
+    var curTime = new Date().getTime() / 1000;
+
+    if (oldTime < curTime && curTime - oldTime < 24 * 60 * 60) {
+
+      var nextTime = curTime - oldTime
+      if (nextTime < 60 * 60) {
+        item.friendCreateTime = parseInt((nextTime / 60) + 1) + "分钟前";
+      } else if (nextTime < 24 * 60 && nextTime > 60 * 60) {
+
+        item.friendCreateTime = (parseInt(nextTime / (24 * 60)) + 1) + "小时前"
+
+      } else {
+        var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
+        item.friendCreateTime = friendTime;
+      }
+
+    } else {
+      var friendTime = timeUtils.formatTimeTwo(oldTime, 'M-D h:m');
+      item.friendCreateTime = friendTime;
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -54,8 +142,11 @@ Page({
     var objectId = options.carid
     console.log('carid :' + objectId)
 
-    this.getCarInfo(objectId);
+    that.setData({
+      carid: objectId
+    })
 
+    this.getCarInfo(objectId);
 
 var share = options.share;
 
@@ -89,9 +180,7 @@ if(share == 1){
     //   })
     // }
 
-    // that.setData({
-    //   carid: objectId
-    // })
+  
 
     // db.collection('car').where({
     //   _id: objectId

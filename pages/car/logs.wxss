@@ -1,3 +1,22 @@
+.lianhua-info{
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  top: 0rpx;
+}
+
+.img-logo{
+
+  width: 200rpx;
+  height: 200rpx;
+}
+
 
 .home-sroll{
 
@@ -33,7 +52,7 @@
 }
 
 .car-t6{
-  font-size: 28rpx;
+  font-size: 26rpx;
     color: #999;
     margin-left: 30rpx;
 }
@@ -52,13 +71,12 @@
 
 .car-t1{
 
-  font-size: 28rpx;
-  background: #F8B864;
+  font-size: 26rpx;
   border-radius: 4rpx;
-  padding-left: 12rpx;
-  padding-right: 12rpx;
-  padding-top: 2rpx;
-  padding-bottom: 2rpx;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+  padding-top: 1rpx;
+  padding-bottom: 1rpx;
   color: #fff;
 }
 
@@ -73,7 +91,7 @@
 
 .car-t3{
  font-size: 26rpx;
-  background: #25CCBC;
+
   border-radius: 40rpx;
   width: 40rpx;
   height: 40rpx;

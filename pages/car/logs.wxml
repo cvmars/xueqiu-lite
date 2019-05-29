@@ -13,8 +13,8 @@
 
 </view> -->
 
-
-<view class = "car-view-notice">
+<view hidden='{{hiddenlist}}' >
+<view class = "car-view-notice" >
   
   <image src="../../image/icon_notice.png" class="car-notice" mode="aspectFill"/> 
   <text class = "car-text-notice">本平台不提供任何形式担保</text>
@@ -46,7 +46,7 @@
   <view class = "shop-item-lianhua"  bindtap='onCarP'>
   
   <image src='../../image/ic_car2.png' class = "image-shop"></image>
-  <text class = "item-shop-text">车找人</text>
+  <text class = "item-shop-text" >车找人</text>
   </view>
 
 
@@ -141,7 +141,7 @@
 
   <view class = "car-1">
   
-    <text class = "car-t1">{{user.carType}}</text>
+    <text class = "car-t1" style=' background: {{user.carTypeColor}}'>{{user.carType}}</text>
 
     <text class = "car-t2">{{user.area_from_text}}</text>
 
@@ -149,11 +149,11 @@
 
   <text class = "car-t2">{{user.area_to_text}}</text>
 
- <text class = "car-t3">{{user.carrang}}</text>
+ <text class = "car-t3" style=' background: {{user.carRangColor}}'>{{user.carrang}}</text>
   </view>
 
 
-<view class = "car-t4">· 途径区域：{{user.friendTime}} </view>
+<view class = "car-t4" hidden='{{user.hidden}}'>· 途径区域：{{user.place_pass}} </view>
   
 <view class ="car-t4">· 出发时间：{{user.friendTime}}</view>
 
@@ -166,12 +166,12 @@
 
 <view class = 'car-3'>
 
-<text class = "car-t5">· {{user.site_count}}空座</text>
+<text class = "car-t5" hidden='{{user.hidden}}'>· {{user.site_count}} 空座   </text>
 
-<text class = "car-t6">   {{user.friendCreateTime}}发布</text>
+<text class = "car-t6">{{user.friendCreateTime}}发布</text>
 
 <!--  {{user.tel}} -->
-<text class = "car-t7">拨打</text>
+<text class = "car-t7" bindtap='onCall'  data-index="{{index}}">拨打</text>
 
 </view>
 
@@ -189,7 +189,7 @@
   </view>
 
 
-
+</view>
 
 
 
@@ -217,10 +217,15 @@
   <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登 录</button>
     
   </dialog>
-
-
-
 </view>
+
+
+
+  <view class = "lianhua-info"  hidden='{{!hiddenlist}}' >
+  
+  <image class = 'img-logo' src='../../image/logo.png'></image>
+  
+  </view>
 
 
 

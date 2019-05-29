@@ -1,5 +1,71 @@
 
+
+
+  <view data-index="{{index}}" class = "car-center" bindtap='onCarDetail'>
+
+
+  <view class = "car-left">
+
+
+
+ <view  class = "car-userinfo">
+    
+ <image class = "product-image" mode="aspectFit" src='{{avator}}'>
+
+</image>
+
+<view class = "product-name">{{carinfo.createName}} cvmars</view>
+
+<view class = "product-time"> </view>
+  </view>
+
+
+  <view class = "car-1">
+  
+    <text class = "car-t1" style=' background: {{carinfo.carTypeColor}}'>{{carinfo.carType}}</text>
+
+    <text class = "car-t2">{{carinfo.area_from_text}}</text>
+
+<image class = "car-img-arrow" src='../../image/icon_right.png'></image>
+
+  <text class = "car-t2">{{carinfo.area_to_text}}</text>
+
+ <text class = "car-t3" style=' background: {{carinfo.carRangColor}}'>{{carinfo.carrang}}</text>
+  </view>
+
+
+<view class = "car-t4">· 途径区域：{{carinfo.place_pass}} </view>
+  
+<view class ="car-t4">· 出发时间：{{carinfo.friendTime}}</view>
+
+<view class = "car-t4">· 特殊说明：{{carinfo.mark}} </view>
+
+
+<view class ='line22' > </view>
+
+
+
+<view class = 'car-3'>
+
+<text class = "car-t5">· {{carinfo.site_count}}空座</text>
+
+<text class = "car-t6">   {{carinfo.friendCreateTime}}发布</text>
+
+<!--  {{user.tel}} -->
+<text class = "car-t7" bindtap='onCall'  data-index="{{index}}">拨打</text>
+
+</view>
+
+   </view>
+
+   </view>
+ 
+   
+
+<!-- 
+
 <view class = 'parent'>
+
 
 
 <view>
@@ -69,7 +135,16 @@
 </view>
 
 
- <button class = "car_publish" open-type ='share' >分享</button>
+ 
+  
+
+  <view hidden='{{hiddenHome}}' bindtap='backHome' class = "car-right">
+  回首页
+  </view> 
+</view> -->
+
+
+<button class = "car_publish" open-type ='share' >分享</button>
 
 
    <dialog visible="{{showLogin}}" title="授权登录" opacity="{{opacity}}" show-close="true" show-footer="false" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="handleClose" bindopen="handleOpen" bindconfirm="handleConfirm">
@@ -80,9 +155,5 @@
   <button  class = 'btn-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
     
   </dialog>
-  
 
-  <view hidden='{{hiddenHome}}' bindtap='backHome' class = "car-right">
-  回首页
-  </view> 
-</view>
+

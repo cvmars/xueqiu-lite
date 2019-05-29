@@ -1,10 +1,9 @@
 const app = getApp()
 const util = require('../../utils/api.js')
-const API_LOGIN = '/api/customers/login_miniprogram/' //登录接口
-const API_USER_UPDATE = '/customer/profile/' //修改用户信息
-const API_POST_PIAOLIU = '/api/bottles-mine/' //抛出漂流瓶
-const API_GET_PIAOLIU = '/api/bottles/pickone/' // 捡漂流瓶
-const API_QINIU_TOKEN = '/token/' //七牛token
+const timeUtils = require('../../utils/util.js')
+const API_CAR_LIST = '/customer/service-car/' //
+const API_LOGIN = '/customer/u/login_miniprogram/' //
+const API_USER_UPDATE = '/customer/u/profile/' //
 
 
 Page({
@@ -103,6 +102,23 @@ Page({
     this.setData({
 
       showLogin: false
+    })
+
+    wx.login({
+      //获取code
+      success: function (res) {
+        var code = res.code //返回code
+        console.log("code :" + code);
+        let data = {
+          code: code
+        }
+        util.Requests_json(util.getBaseUrl() + API_LOGIN, data).then((res) => {
+
+
+          that.onLoad()
+
+        })
+      }
     })
   },
 

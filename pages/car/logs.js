@@ -14,6 +14,7 @@ Page({
     times:[],
     userInfo: {},
     openid:'',
+    hiddenlist:false,
     showLogin:false,
     carType: ['车找人', '人找车'],
     carRang: ['县', '市', '省', '国'],
@@ -125,7 +126,7 @@ Page({
   onUpdataInfo:function(option){
 
    let that = this;
-    util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, option).then((res) => {
+    util.Requests_put(util.getBaseUrl() + API_USER_UPDATE, option).then((res) => {
 
     })
   },
@@ -154,9 +155,6 @@ Page({
           code: code
         }
         util.Requests_json(util.getBaseUrl() + API_LOGIN, data).then((res) => {
-
-       
-          that.onLoad()
         
         })
       }
@@ -165,11 +163,11 @@ Page({
   
   onChangeOrder:function(e){
 
-    if (this.data.orderStr == "-start_at"){
+    if (this.data.orderStr == "-update_at"){
 
 this.setData({
 
-  orderStr: '-update_at',
+  orderStr: '-start_at',
   orderCarStr: '按出发时间排序',
 })
 
@@ -177,7 +175,7 @@ this.setData({
 
       this.setData({
 
-        orderStr: '-start_at',
+        orderStr: '-update_at',
         orderCarStr: '按发布时间排序',
       })
 
@@ -233,10 +231,50 @@ this.setData({
     })
   },
 
+  onCall:function(e){
+
+    var index = parseInt(e.currentTarget.dataset.index);
+    // 取出id值
+    var objectId = this.data.carData[index].tel;
+
+    console.log('tel :' + objectId)
+
+    wx.makePhoneCall({
+      phoneNumber: objectId //仅为示例，并非真实的电话号码
+    })
+  },
+
   carTime(item){
 
     item.carType = this.data.carType[parseInt(item.car_service_type) - 1]
+    
+    if (parseInt(item.car_service_type) == 1){
+
+      item.hidden = false;
+    }else{
+      item.hidden = true;
+    }
+    
     item.carrang = this.data.carRang[parseInt(item.range_type)]
+
+    if (parseInt(item.car_service_type)== 1){
+
+      item.carTypeColor =  '#F8B864'
+    }else{
+      item.carTypeColor = '#FF494B'
+    }
+
+
+    if (parseInt(item.range_type) == 0) {
+
+      item.carRangColor = '#5195FF'
+    } else if (parseInt(item.range_type) == 1){
+      item.carRangColor = '#25CCBC'
+    } else if (parseInt(item.range_type) == 2){
+      item.carRangColor = '#9972F1'
+    }else{
+      item.carRangColor = '#FF494B'
+    }
   },
 
   friendTime(item){
@@ -330,6 +368,19 @@ this.setData({
       
     }else{
 
+      wx.login({
+        //获取code
+        success: function (res) {
+          var code = res.code //返回code
+          console.log("code :" + code);
+          let data = {
+            code: code
+          }
+          util.Requests_json(util.getBaseUrl() + API_LOGIN, data).then((res) => {
+
+          })
+        }
+      })
 
 
       let data = {}
@@ -369,8 +420,36 @@ this.setData({
       env: 'lianhua-82fcb3',
        traceUser : true})
   
-    this.getOpenid()     
+    this.getOpenid()  
+
+
+    const db = wx.cloud.database();
+  
+    // 获取分享的信息
+    db.collection('share').get({
+      success: function (res) {
+
+          that.setData({
+
+            hiddenlist: res.data[0].isHidden
+          })
+  
+       
+        if (that.data.hiddenlist == true){
+
+          wx.setNavigationBarTitle({
+            title: '莲花店铺'
+          })
+        }
+        console.log("shareInfo :" + res.data +" , "+ that.data.hiddenlist)
+      }
+    })
+
+
   },
+
+
+
   getOpenid() {
     let that = this;
     wx.cloud.callFunction({
@@ -399,16 +478,7 @@ this.setData({
     this.getCarList(data)
   },
 
-  //完善用户信息
-  onUpdateUserInfo: function (data) {
 
-
-    util.Requests_json(util.getBaseUrl() + API_USER_UPDATE, data)
-      .then((res) => {
-
-      })
-
-  },
 
   onSearch:function(){
 
